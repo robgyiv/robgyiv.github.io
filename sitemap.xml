@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://robbie.computer/about/</loc>
+    <lastmod>2019-01-13T11:04:52+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://robbie.computer/projects/sherlockml/</loc>
+    <lastmod>2019-01-13T10:49:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://robbie.computer/projects/learn-sherlockml/</loc>
+    <lastmod>2019-01-13T10:48:54+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://robbie.computer/projects/lapalux.com/</loc>
+    <lastmod>2019-01-13T10:48:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://robbie.computer/projects/asi-data-science/</loc>
+    <lastmod>2019-01-13T10:48:40+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://robbie.computer/projects/comment-wisdom/</loc>
+    <lastmod>2019-01-13T10:48:30+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://robbie.computer/projects/fancy-trumpets/</loc>
+    <lastmod>2019-01-13T10:46:33+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://robbie.computer/projects/tasks-matrix/</loc>
+    <lastmod>2019-01-13T10:43:29+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://robbie.computer/projects/goals-on-goals/</loc>
+    <lastmod>2019-01-12T18:24:36+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://robbie.computer/</loc>
+    <lastmod>2019-01-12T15:40:56+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://robbie.computer/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://robbie.computer/projects/</loc>
+    <lastmod>2019-01-13T10:49:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://robbie.computer/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on Creative coding and things</title>
+    <link>https://robbie.computer/projects/</link>
+    <description>Recent content in Projects on Creative coding and things</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sun, 13 Jan 2019 10:49:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://robbie.computer/projects/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SherlockML</title>
+      <link>https://robbie.computer/projects/sherlockml/</link>
+      <pubDate>Sun, 13 Jan 2019 10:49:00 +0000</pubDate>
+      
+      <guid>https://robbie.computer/projects/sherlockml/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Learn SherlockML</title>
+      <link>https://robbie.computer/projects/learn-sherlockml/</link>
+      <pubDate>Sun, 13 Jan 2019 10:48:54 +0000</pubDate>
+      
+      <guid>https://robbie.computer/projects/learn-sherlockml/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Lapalux.com</title>
+      <link>https://robbie.computer/projects/lapalux.com/</link>
+      <pubDate>Sun, 13 Jan 2019 10:48:47 +0000</pubDate>
+      
+      <guid>https://robbie.computer/projects/lapalux.com/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Asi Data Science</title>
+      <link>https://robbie.computer/projects/asi-data-science/</link>
+      <pubDate>Sun, 13 Jan 2019 10:48:40 +0000</pubDate>
+      
+      <guid>https://robbie.computer/projects/asi-data-science/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Comment Wisdom</title>
+      <link>https://robbie.computer/projects/comment-wisdom/</link>
+      <pubDate>Sun, 13 Jan 2019 10:48:30 +0000</pubDate>
+      
+      <guid>https://robbie.computer/projects/comment-wisdom/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fancy Trumpets</title>
+      <link>https://robbie.computer/projects/fancy-trumpets/</link>
+      <pubDate>Sun, 13 Jan 2019 10:46:33 +0000</pubDate>
+      
+      <guid>https://robbie.computer/projects/fancy-trumpets/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tasks Matrix</title>
+      <link>https://robbie.computer/projects/tasks-matrix/</link>
+      <pubDate>Sun, 13 Jan 2019 10:43:29 +0000</pubDate>
+      
+      <guid>https://robbie.computer/projects/tasks-matrix/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Goals on Goals</title>
+      <link>https://robbie.computer/projects/goals-on-goals/</link>
+      <pubDate>Sat, 12 Jan 2019 18:24:36 +0000</pubDate>
+      
+      <guid>https://robbie.computer/projects/goals-on-goals/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
