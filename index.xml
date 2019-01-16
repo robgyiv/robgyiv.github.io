@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Projects on Creative coding and things</title>
+    <title>Projects on robbie.computer/</title>
     <link>https://robbie.computer/</link>
-    <description>Recent content in Projects on Creative coding and things</description>
+    <description>Recent content in Projects on robbie.computer/</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Sat, 12 Jan 2019 15:40:56 +0000</lastBuildDate>
@@ -35,8 +35,8 @@
       <pubDate>Sun, 13 Jan 2019 11:04:52 +0000</pubDate>
       
       <guid>https://robbie.computer/about/</guid>
-      <description>About Creative coder based in London.
-Interested in where technology and creativity meet. Not so interested in self-promotion.
+      <description>About Creative coder based in London interested in where technology and creativity meet.
+Experienced in JavaScript (React, Redux, testing), Python, and looking things up.
   </description>
     </item>
     
