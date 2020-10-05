@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on robbie.computer/</title>
@@ -6,10 +6,24 @@
     <description>Recent content in Projects on robbie.computer/</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Sat, 09 Mar 2019 18:40:05 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 05 Oct 2020 21:10:05 +0100</lastBuildDate><atom:link href="https://robbie.computer/projects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Led Panel 2</title>
+      <link>https://robbie.computer/projects/led-panel-2/</link>
+      <pubDate>Mon, 05 Oct 2020 21:10:05 +0100</pubDate>
+      
+      <guid>https://robbie.computer/projects/led-panel-2/</guid>
+      <description></description>
+    </item>
     
-	<atom:link href="https://robbie.computer/projects/index.xml" rel="self" type="application/rss+xml" />
-    
+    <item>
+      <title>Led Panel 1</title>
+      <link>https://robbie.computer/projects/led-panel-1/</link>
+      <pubDate>Mon, 05 Oct 2020 21:10:02 +0100</pubDate>
+      
+      <guid>https://robbie.computer/projects/led-panel-1/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Pictures Management</title>
