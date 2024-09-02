@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<html class="dark light">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +13,7 @@
     
     
     <title>
-         robbie.computer
+         Projects
         
     </title>
 
@@ -39,20 +41,40 @@
     
     
 
+    
+    
+
+    
+    
+    
+    
+    
 
     
 
     
     <link rel="alternate" type="application/atom+xml" title="robbie.computer" href="https://robbie.computer/atom.xml">
 
+
     
     
+        <link rel="stylesheet" type="text/css" href=https://robbie.computer/theme/light.css />
+        <link rel="stylesheet" type="text/css" href="https://robbie.computer/theme/dark.css" media="(prefers-color-scheme: dark)" />
     
-        <link rel="stylesheet" type="text/css" href="https://robbie.computer/theme/light.css"/>
+
+    <!-- Set the correct theme in the script -->
+    <script src=https://robbie.computer/js/themetoggle.js></script>
+    
+        <script>
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                setTheme("dark");
+            } else {
+                setTheme("light");
+            }
+        </script>
     
 
     <link rel="stylesheet" type="text/css" media="screen" href=https://robbie.computer/main.css />
-
 
     
 </head>
@@ -67,7 +89,7 @@
         <div class="socials">
             
             <a rel="me" href="https:&#x2F;&#x2F;github.com&#x2F;robgyiv" class="social">
-                <img alt=github src="/social_icons/github.svg">
+                <img alt=github src=https://robbie.computer/social_icons/github.svg>
             </a>
             
         </div>
@@ -75,11 +97,13 @@
 
     <nav>
         
-            <a href=&#x2F;about style="margin-left: 0.7em">&#x2F;about</a>
+        <a href=https://robbie.computer/about style="margin-left: 0.5em">&#x2F;about</a>
         
-            <a href=&#x2F;projects style="margin-left: 0.7em">&#x2F;projects</a>
+        <a href=https://robbie.computer/projects style="margin-left: 0.5em">&#x2F;projects</a>
         
-            <a href=&#x2F;posts style="margin-left: 0.7em">&#x2F;posts</a>
+        <a href=https://robbie.computer/posts style="margin-left: 0.5em">&#x2F;posts</a>
+        
+
         
     </nav>
 </header>
@@ -89,7 +113,7 @@
         
     
     <div class="page-header">
-        Projects<span class="primary-color" style="font-size: 1.6em"></span>
+        Projects<span class="primary-color" style="font-size: 1.6em">.</span>
     </div>
 
 
@@ -103,7 +127,7 @@
             <div class="card-info">
                 <h1 class="card-title">
                     
-                    <a href=https:&#x2F;&#x2F;github.com&#x2F;robgyiv&#x2F;git-find-rs rel="noopener noreferrer">git-find-rs</a>
+                    <a href=https:&#x2F;&#x2F;github.com&#x2F;robgyiv&#x2F;git-find-rs>git-find-rs</a>
                     
                 </h1>
 
@@ -127,7 +151,31 @@
             <div class="card-info">
                 <h1 class="card-title">
                     
-                    <a href=https:&#x2F;&#x2F;vimeo.com&#x2F;464978924 rel="noopener noreferrer">LED panel</a>
+                    <a href=https:&#x2F;&#x2F;github.com&#x2F;robgyiv&#x2F;git-web-line>git-web-line</a>
+                    
+                </h1>
+
+                <div class="meta">
+                </div>
+
+                <div class="card-description">
+                    
+                        Neovim plugin to easily share Git web links
+                    
+                </div>
+            </div>
+        </div>
+
+    
+        <div class="card">
+            
+                <div class="card-image-placeholder"></div>
+            
+
+            <div class="card-info">
+                <h1 class="card-title">
+                    
+                    <a href=https:&#x2F;&#x2F;vimeo.com&#x2F;464978924>LED panel</a>
                     
                 </h1>
 
@@ -151,7 +199,7 @@
             <div class="card-info">
                 <h1 class="card-title">
                     
-                    <a href=https:&#x2F;&#x2F;faculty.ai rel="noopener noreferrer">Frontier</a>
+                    <a href=https:&#x2F;&#x2F;faculty.ai>Frontier</a>
                     
                 </h1>
 
@@ -171,6 +219,9 @@
     </main>
 
     
+
+
+        
 
     </div>
 </body>
