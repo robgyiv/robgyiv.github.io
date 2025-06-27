@@ -1,57 +1,49 @@
-function setTheme(mode) {
-    localStorage.setItem("theme-storage", mode);
+// Function to apply the theme
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
 }
 
-// Functions needed for the theme toggle
-// 
+// Function to detect and apply the system's theme
+function detectSystemTheme() {
+  const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  return isDarkMode ? "dark" : "light";
+}
 
+// Function to initialize the theme
+function initializeTheme() {
+  const userPreference = localStorage.getItem("theme");
+  if (userPreference) {
+    applyTheme(userPreference);
+  } else {
+    const systemTheme = detectSystemTheme();
+    applyTheme(systemTheme);
+  }
+}
+
+// Event listener for system theme changes
+window
+  .matchMedia("(prefers-color-scheme: dark)")
+  .addEventListener("change", (e) => {
+    const userPreference = localStorage.getItem("theme");
+    if (!userPreference) {
+      const newTheme = e.matches ? "dark" : "light";
+      applyTheme(newTheme);
+    }
+  });
+
+// Function to toggle the theme manually
 function toggleTheme() {
-    if (localStorage.getItem("theme-storage") === "light") {
-        setTheme("dark");
-        updateItemToggleTheme();
-    } else if (localStorage.getItem("theme-storage") === "dark") {
-        setTheme("light");
-        updateItemToggleTheme();
-    }
+  const currentTheme = document.documentElement.getAttribute("data-theme");
+  const newTheme = currentTheme === "dark" ? "light" : "dark";
+  applyTheme(newTheme);
+  localStorage.setItem("theme", newTheme);
 }
 
-function updateItemToggleTheme() {
-    let mode = getSavedTheme();
+// Initialize theme on page load
+initializeTheme();
 
-    const darkModeStyle = document.getElementById("darkModeStyle");
-    if (darkModeStyle) {
-        darkModeStyle.disabled = (mode === "light");
-    }
-    
-    const sunIcon = document.getElementById("sun-icon");
-    const moonIcon = document.getElementById("moon-icon");
-    if (sunIcon && moonIcon) {
-        sunIcon.style.display = (mode === "dark") ? "inline-block" : "none";
-        moonIcon.style.display = (mode === "light") ? "inline-block" : "none";
-    }
-
-    let htmlElement = document.querySelector("html");
-    if (mode === "dark") {
-        htmlElement.classList.remove("light")
-        htmlElement.classList.add("dark")
-    } else if (mode === "light") {
-        htmlElement.classList.remove("dark")
-        htmlElement.classList.add("light")
-    }
+// Example: Add a button for manual toggling
+const toggleButton = document.getElementById("theme-toggle");
+if (toggleButton) {
+  toggleButton.addEventListener("click", toggleTheme);
 }
-
-function getSavedTheme() {
-    let currentTheme = localStorage.getItem("theme-storage");
-    if(!currentTheme) {
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            currentTheme = "dark";
-        } else {
-            currentTheme = "light";
-        }
-    }
-
-    return currentTheme;
-}
-
-// Update the toggle theme on page load
-updateItemToggleTheme();
