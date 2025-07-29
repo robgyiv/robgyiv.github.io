@@ -10,6 +10,13 @@
         <loc>https://robbie.computer/posts/</loc>
     </url>
     <url>
+        <loc>https://robbie.computer/posts/foo/</loc>
+        <lastmod>2025-01-01</lastmod>
+    </url>
+    <url>
+        <loc>https://robbie.computer/posts/page/1/</loc>
+    </url>
+    <url>
         <loc>https://robbie.computer/projects/</loc>
     </url>
     <url>
