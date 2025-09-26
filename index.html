@@ -91,6 +91,8 @@
         
         <a href=https://robbie.computer/projects style="margin-left: 0.5em">&#x2F;projects</a>
         
+        <a href=https://robbie.computer/posts style="margin-left: 0.5em">&#x2F;posts</a>
+        
 
         
     </nav>
@@ -414,8 +416,8 @@
         const hash = await getSHA256Hash(title);
         const seed = hashToSeed(hash);
         const rng = mulberry32(seed);
-        const pixelData = generateGradientPixelArt(rng, 16, 16, palette);
-        renderPixelArt(pixelData, canvasId, 10);
+        const pixelData = generateGradientPixelArt(rng, 64, 128, palette);
+        renderPixelArt(pixelData, canvasId, 8);
     }
 </script>
 
