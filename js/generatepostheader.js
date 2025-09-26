@@ -54,42 +54,73 @@ function getBrightness(hex) {
   return 0.299 * r + 0.587 * g + 0.114 * b;
 }
 
-// Generate gradient pixel art with slight randomness
-function generateGradientPixelArt(rng, width = 16, height = 16, palette) {
-  const pixels = [];
-  for (let i = 0; i < width * height; i++) {
-    pixels.push(palette[Math.floor(rng() * palette.length)]);
+// Simple noise function using deterministic RNG
+function noise2D(x, y, rng, scale = 0.1) {
+  // Create pseudo-coordinates for noise sampling
+  const nx = x * scale;
+  const ny = y * scale;
+
+  // Simple gradient noise approximation
+  const a = Math.sin(nx * 12.9898 + ny * 78.233) * 43758.5453;
+  const b = Math.sin(nx * 93.9898 + ny * 47.233) * 28653.8142;
+  const c = Math.sin(nx * 65.9898 + ny * 12.233) * 91735.2341;
+
+  // Combine with RNG for deterministic but varied results
+  const rngInfluence = rng() * 0.3;
+  return (
+    (Math.abs(a % 1) + Math.abs(b % 1) + Math.abs(c % 1)) / 3 + rngInfluence
+  );
+}
+
+// Generate gradient pixel art with noise patterns
+function generateGradientPixelArt(rng, width = 32, height = 32, palette) {
+  const pixelGrid = [];
+  const scale = 0.1; // Adjust for noise frequency (lower = smoother)
+
+  // Generate multiple noise layers for more interesting patterns
+  const noiseOffsetX = rng() * 100;
+  const noiseOffsetY = rng() * 100;
+
+  for (let y = 0; y < height; y++) {
+    pixelGrid[y] = [];
+    for (let x = 0; x < width; x++) {
+      // Generate noise value for this position
+      const noiseValue = noise2D(
+        x + noiseOffsetX,
+        y + noiseOffsetY,
+        rng,
+        scale,
+      );
+
+      // Map noise to palette index
+      const paletteIndex = Math.floor((noiseValue % 1) * palette.length);
+      pixelGrid[y][x] = palette[paletteIndex];
+    }
   }
 
-  // Instead of sorting by brightness, shuffle with more randomness
-  // Fisher-Yates shuffle with deterministic RNG
-  for (let i = pixels.length - 1; i > 0; i--) {
-    const j = Math.floor(rng() * (i + 1));
-    [pixels[i], pixels[j]] = [pixels[j], pixels[i]];
-  }
-
-  // Optional: create some loose grouping while maintaining randomness
-  const groupSize = 3;
-  for (let i = 0; i < pixels.length - groupSize; i += groupSize) {
-    if (rng() < 0.3) { // 30% chance to create a small cluster
-      const color = pixels[i];
-      for (let j = 1; j < groupSize && i + j < pixels.length; j++) {
-        if (rng() < 0.7) { // 70% chance each pixel in group uses same color
-          pixels[i + j] = color;
+  // Optional: Add some coherent regions by smoothing neighboring pixels
+  if (rng() < 0.4) {
+    for (let y = 1; y < height - 1; y++) {
+      for (let x = 1; x < width - 1; x++) {
+        if (rng() < 0.3) {
+          // Sometimes blend with neighbors for smoother regions
+          const neighbors = [
+            pixelGrid[y - 1][x],
+            pixelGrid[y + 1][x],
+            pixelGrid[y][x - 1],
+            pixelGrid[y][x + 1],
+          ];
+          // Pick most common neighbor color occasionally
+          pixelGrid[y][x] = neighbors[Math.floor(rng() * neighbors.length)];
         }
       }
     }
   }
 
-  const pixelGrid = [];
-  for (let y = 0; y < height; y++) {
-    pixelGrid[y] = pixels.slice(y * width, (y + 1) * width);
-  }
-
   return pixelGrid;
 }
 
-function renderPixelArt(pixels, canvasId, pixelSize = 10) {
+function renderPixelArt(pixels, canvasId, pixelSize = 2) {
   const canvas = document.getElementById(canvasId);
   const ctx = canvas.getContext("2d");
   pixels.forEach((row, y) => {
@@ -104,8 +135,8 @@ async function generateAndRender(title) {
   const hash = await getSHA256Hash(title);
   const seed = hashToSeed(hash);
   const rng = mulberry32(seed);
-  const pixelData = generateGradientPixelArt(rng, 16, 16, palette);
-  renderPixelArt(pixelData, "pixelCanvas", 10);
+  const pixelData = generateGradientPixelArt(rng, 32, 32, palette);
+  renderPixelArt(pixelData, "pixelCanvas", 2);
 }
 
 // Example usage:

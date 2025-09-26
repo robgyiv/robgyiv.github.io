@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" class="dark light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+
+    
+    
+    
+    <title>
+         Move fast and fix things
+        
+    </title>
+
+    
+    <meta property="og:title"
+        content="Move fast and fix things" />
+    
+    
+
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+
+    
+    <link rel="alternate" type="application/atom+xml" title="robbie.computer" href="https://robbie.computer/ atom.xml">
+
+
+    
+    
+    <link rel="stylesheet" type="text/css" href=https://robbie.computer/theme/light.css />
+    <link rel="stylesheet" type="text/css" href="https://robbie.computer/theme/dark.css"
+        media="(prefers-color-scheme: dark)" />
+    
+
+    <!-- Set the correct theme in the script -->
+    <script src=https://robbie.computer/js/themetoggle.js></script>
+    
+    <script>
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            setTheme("dark");
+        } else {
+            setTheme("light");
+        }
+    </script>
+    
+
+    <link rel="stylesheet" type="text/css" media="screen" href=https://robbie.computer/main.css />
+
+    
+</head>
+
+
+<body>
+    <div class="content">
+        <header>
+    <div class="main">
+        <a href=https:&#x2F;&#x2F;robbie.computer>robbie.computer</a>
+
+        <div class="socials">
+            
+        </div>
+    </div>
+
+    <nav>
+        
+        <a href=https://robbie.computer/about style="margin-left: 0.5em">&#x2F;about</a>
+        
+        <a href=https://robbie.computer/projects style="margin-left: 0.5em">&#x2F;projects</a>
+        
+        <a href=https://robbie.computer/posts style="margin-left: 0.5em">&#x2F;posts</a>
+        
+
+        
+    </nav>
+</header>
+
+
+        
+        
+    
+<main>
+    <article>
+        <div class="title">
+            
+            
+<div class="page-header">
+    Move fast and fix things
+</div>
+
+
+            <div class="meta">
+                
+                Posted on <time>2025-09-26</time>
+                
+
+                
+
+                
+
+                
+                
+
+                
+                
+
+                
+
+            </div>
+        </div>
+
+        
+
+        
+        
+
+        <section class="body">
+            <p><em>Dogma is cheap. Engineering is expensive.</em></p>
+<p>It's a story you've heard before: a team shipped a prototype to prove a product idea. It worked, and the users loved it. The prototype was pushed to production with a few TODOs and optimism. Six months later, every changed touched that service. Incidents clustered around it and junior engineers avoided it. The team moved "fast" for one week and paid for it every week after.</p>
+<p>This isn't an argument against speed; it's an argument against <strong>speed without foundations</strong> and a management culture that pushes risk onto engineers, users, and the future. "Move fast and break things" made sense at a certain point in a uniquely placed and outrageously resourced company's history. For most teams, compounding velocity comes from moving deliberately and fixing relentlessly.</p>
+<p>Who benefits?</p>
+<p>"Move fast" is management-friendly. Growth charts go up, experiments ship, and the roadmap looks impressive to investors.</p>
+<p>Who pays?</p>
+<ul>
+<li>Engineers on call at 3 a.m.</li>
+<li>Future teams trudging through winding code paths</li>
+<li>Users' performance regressions and distrust of updates</li>
+<li>The product roadmap, as unforeseen rework adds time and complexity to feature estimates</li>
+</ul>
+<p>Speed without foundations is a high-interest loan, and the interest rate is your sprint cycle time.</p>
+<h2 id="the-case-for-moving-slowly-so-you-can-go-faster">The case for moving slowly (so you can go faster)</h2>
+<p>"Slow" isn't literal, it's <em>friction-aware</em>. It means you should:</p>
+<ul>
+<li><strong>Reduce blast radius</strong> with isolation and feature flags</li>
+<li><strong>Shorten feedback loops</strong> with CI, tests, and observability</li>
+<li><strong>Eliminate recurring toil</strong> before adding more feature debt</li>
+</ul>
+<p>The payoff isn't philosophical, it's practical: you spend less time recovering and more time building the right thing. You just have to put the ground work in first to create a foundation where experiments can be successful. Collect the data - including engineers' perspectives - and iterate based on it.</p>
+<p>Constant speed leads to burnout for engineers and users, so empower the engineers to do their best work by encouraging a healthy environment to experiment in.</p>
+<h2 id="a-simple-decision-framework">A simple decision framework</h2>
+<p>Use this matrix before you start a sprint:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>              BLAST RADIUS
+</span><span>           low                   high
+</span><span>SPEED   +---------------------+----------------------+
+</span><span> low    | polish later        | harden first         |
+</span><span>        | (safe sandboxes)    | (APIs, auth, data)   |
+</span><span>        +---------------------+----------------------+
+</span><span> high   | prototype fast      | abort or isolate     |
+</span><span>        | (flags, throwaway)  | (split systems,      |
+</span><span>        |                     |  gates)              |
+</span><span>        +---------------------+----------------------+
+</span></code></pre>
+<p><strong>Legend</strong></p>
+<ul>
+<li><strong>Speed</strong> = how quickly you’re trying to deliver (time pressure, shortcuts, iteration pace).</li>
+<li><strong>Blast radius</strong> = the potential scope of damage if the change goes wrong (small sandbox vs. core systems).</li>
+<li><strong>Interpretation</strong>:
+<ul>
+<li><em>Low speed + low blast</em>: safe to polish later, but timebox it.</li>
+<li><em>High speed + low blast</em>: prototype quickly, ideally throw away.</li>
+<li><em>Low speed + high blast</em>: harden first, prioritise contracts and safety.</li>
+<li><em>High speed + high blast</em>: avoid, or isolate tightly (flags, separate systems).</li>
+</ul>
+</li>
+</ul>
+<p>Five questions to ask before you cut corners:</p>
+<ol>
+<li>How reversible is this decision?</li>
+<li>What’s the blast radius if we’re wrong?</li>
+<li>What signals will tell us quickly that we’re wrong?</li>
+<li>What does “done” mean beyond “it works on my machine”?</li>
+<li>If this becomes permanent (it will), what hurts first?</li>
+</ol>
+<hr />
+<h2 id="foundations-that-make-speed-safe">Foundations that make speed safe</h2>
+<p>Think of these as the <strong>flooring</strong> under your product engineering:</p>
+<ol>
+<li>
+<p><strong>Contracts &amp; versioned interfaces</strong></p>
+<ul>
+<li>Typed boundaries, consumer-driven tests, schema migrations with roll-forward/rollback.</li>
+</ul>
+</li>
+<li>
+<p><strong>Fast, boring CI/CD</strong></p>
+<ul>
+<li>Lint, unit, contract, and a small number of high-signal E2E tests.</li>
+<li>PR checks finish in minutes, not hours. (Slow feedback is a tax on quality.)</li>
+</ul>
+</li>
+<li>
+<p><strong>Observability from day one</strong></p>
+<ul>
+<li>Structured logs, traces, SLOs, and dashboards that answer: <em>Is it broken? Why?</em></li>
+<li>Feature flags with per-tenant rollouts and kill switches.</li>
+</ul>
+</li>
+<li>
+<p><strong>Operational hygiene</strong></p>
+<ul>
+<li>Runbooks, autoscaling, rate limits, idempotency, backpressure.</li>
+<li>“Definition of Done” includes instrumentation and rollback.</li>
+</ul>
+</li>
+</ol>
+<p>These aren’t gold-plating. They’re <em>how</em> you ship quickly without living in incident review calls.</p>
+<hr />
+<h2 id="where-moving-fast-does-make-sense">Where moving fast <em>does</em> make sense</h2>
+<ul>
+<li><strong>Hypothesis tests</strong>: Narrow questions with cheap failure (“Do users click X?”).</li>
+<li><strong>Internal tools</strong>: Low-stakes prototypes that don’t face customers.</li>
+<li><strong>Exploration spikes</strong>: Hard timebox (48–72 hours), explicit decision to keep/discard.</li>
+</ul>
+<p>Guardrails for fast work:</p>
+<ul>
+<li>Do it <strong>behind flags</strong> with a default-off kill switch.</li>
+<li>Mark code as <strong>throwaway</strong> in the repo structure (e.g., <code>/spikes/…</code>) and CI excludes.</li>
+<li>Create a <strong>decision memo</strong> at the end: <em>Keep? Rewrite? Delete?</em> No memo → auto-delete.</li>
+</ul>
+<hr />
+<h2 id="throwing-code-away-is-valid-so-actually-do-it">Throwing code away is valid (so actually do it)</h2>
+<p>Most “temporary” code becomes permanent because deletion feels risky. Make deletion the default:</p>
+<ul>
+<li>Timebox spikes and schedule the <strong>removal</strong> as a first-class task.</li>
+<li>If you keep it, pay the <strong>acceptance fee</strong>: tests, docs, observability, ownership.</li>
+</ul>
+<hr />
+<h2 id="llms-fast-scaffolding-slow-foundations">LLMs: fast scaffolding, slow foundations</h2>
+<p>Generated code is great for <strong>ideas and scaffolding</strong>, not as a substitute for human intent or guardrails.</p>
+<p><strong>Anti-patterns</strong></p>
+<ul>
+<li><em>Paste-driven development</em>: code appears without design.</li>
+<li><em>Unknown unknowns</em>: plausible code that hides edge cases.</li>
+<li><em>Dependency drift</em>: generated snippets lock in libraries you didn’t choose.</li>
+</ul>
+<p><strong>Policy that works</strong></p>
+<ul>
+<li><strong>Human-in-the-loop</strong> review: no exceptions.</li>
+<li><strong>Test-before-trust</strong>: new surfaces must arrive with tests, not “we’ll add them later.”</li>
+<li><strong>Label AI PRs</strong> and track rework vs. manual PRs. If AI PRs create more rework, adjust usage.</li>
+<li><strong>Security &amp; licensing checks</strong> by default.</li>
+</ul>
+<p>Generated code isn’t free; maintenance is where the bill shows up.</p>
+<hr />
+<h2 id="product-engineering-on-solid-ground">Product engineering on solid ground</h2>
+<p>The modern product engineer is a <em>system thinker</em>. They balance customer outcomes with platform realities:</p>
+<ul>
+<li>Translate product goals into <strong>shaped work</strong> with clear edges and constraints.</li>
+<li>Refuse one-way-door shortcuts on core systems (auth, billing, data contracts).</li>
+<li>Insist on <strong>operational acceptance criteria</strong>: metrics, alerts, runbooks.</li>
+</ul>
+<p>Empowerment means the right to say <strong>“Not like this.”</strong> Provide an alternative, but hold the line.</p>
+<hr />
+<h2 id="tactics-that-increase-velocity-by-moving-slowly">Tactics that increase velocity by “moving slowly”</h2>
+<ul>
+<li><strong>Fix Fridays / Stability Sprints</strong>: recurring time to retire sharp edges.</li>
+<li><strong>Error budgets tied to roadmaps</strong>: breach the SLO → fewer launches until healthy.</li>
+<li><strong>20% debt quota</strong>: every cycle reserves time for de-risking (tests, docs, infra).</li>
+<li><strong>Change sise discipline</strong>: smaller PRs, faster reviews, fewer surprises.</li>
+<li><strong>Golden paths</strong>: paved examples for common tasks (service template, CI config, observability scaffolding).</li>
+<li><strong>Incident learning that sticks</strong>: every postmortem yields a check or template change—not just a doc.</li>
+</ul>
+<p><strong>Metrics to watch (DORA + a few practicals)</strong></p>
+<ul>
+<li>Lead time for changes</li>
+<li>Change failure rate</li>
+<li>MTTR</li>
+<li>Deployment frequency</li>
+<li>Escaped defects per release
+Trend direction matters more than absolutes; use them to justify the “fix” work.</li>
+</ul>
+<hr />
+<h2 id="a-script-for-pushing-back-and-aligning">A script for pushing back (and aligning)</h2>
+<p>Use this when the room wants speed and you smell future pain:</p>
+<blockquote>
+<p><em>“We can ship this in two ways. Path A gets it out this week with a high blast radius and no rollback. Path B adds contracts and a flag; it’s two days slower but reversible. Given the risk, I recommend Path B. If we choose A, here’s the explicit risk we’re accepting and the rollback plan I’ll need approved.”</em></p>
+</blockquote>
+<p>Make risk legible. Leaders can accept risk; they shouldn’t accept <em>surprise</em>.</p>
+<hr />
+<h2 id="memorable-truths">Memorable truths</h2>
+<ul>
+<li><strong>Slow is smooth, smooth is fast.</strong></li>
+<li><strong>You don’t outrun tech debt; you refinance it.</strong></li>
+<li><strong>If it’s not observable, it’s not done.</strong></li>
+<li><strong>Prototype like it’s disposable, design like it will live forever.</strong></li>
+<li><strong>Fixing things isn’t the cost of speed; it’s the engine of speed.</strong></li>
+</ul>
+<hr />
+<h2 id="try-this-for-two-weeks">Try this for two weeks</h2>
+<ol>
+<li>Tag one high-blast-radius area.</li>
+<li>Add missing contracts/tests/flags until you can roll forward or back safely.</li>
+<li>Measure PR lead time and incident count before/after.</li>
+<li>Write a three-paragraph note on what got easier.</li>
+</ol>
+<p>If your team doesn’t feel faster afterward, I’ll be surprised.</p>
+<hr />
+<h3 id="the-point">The point</h3>
+<p>“Move fast and break things” was a growth hack that turned into a dogma. Dogmas are bad engineering. The teams that win long-term don’t worship speed; they <strong>compound</strong> it—by moving thoughtfully now, so they can move effortlessly later.</p>
+<p><strong>Move slowly and fix things.</strong> Then watch how fast you really go.</p>
+
+        </section>
+    </article>
+</main>
+
+
+
+        
+
+    </div>
+</body>
+
+</html>
