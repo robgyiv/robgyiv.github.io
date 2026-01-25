@@ -166,17 +166,16 @@
 <hr />
 <h2 id="a-simple-decision-framework">A simple decision framework</h2>
 <p>Use this matrix before you start a sprint:</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>              BLAST RADIUS
-</span><span>           low                   high
-</span><span>SPEED   +---------------------+----------------------+
-</span><span> low    | polish later        | harden first         |
-</span><span>        | (safe sandboxes)    | (APIs, auth, data)   |
-</span><span>        +---------------------+----------------------+
-</span><span> high   | prototype fast      | abort or isolate     |
-</span><span>        | (flags, throwaway)  | (split systems,      |
-</span><span>        |                     |  gates)              |
-</span><span>        +---------------------+----------------------+
-</span></code></pre>
+<pre class="giallo" style="color-scheme: light dark; color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);"><code data-lang="plain"><span class="giallo-l"><span>              BLAST RADIUS</span></span>
+<span class="giallo-l"><span>           low                   high</span></span>
+<span class="giallo-l"><span>SPEED   +---------------------+----------------------+</span></span>
+<span class="giallo-l"><span> low    | polish later        | harden first         |</span></span>
+<span class="giallo-l"><span>        | (safe sandboxes)    | (APIs, auth, data)   |</span></span>
+<span class="giallo-l"><span>        +---------------------+----------------------+</span></span>
+<span class="giallo-l"><span> high   | prototype fast      | abort or isolate     |</span></span>
+<span class="giallo-l"><span>        | (flags, throwaway)  | (split systems,      |</span></span>
+<span class="giallo-l"><span>        |                     |  gates)              |</span></span>
+<span class="giallo-l"><span>        +---------------------+----------------------+</span></span></code></pre>
 <p><strong>Legend</strong></p>
 <ul>
 <li><strong>Speed</strong> = how quickly you’re trying to deliver (time pressure, shortcuts, iteration pace).</li>
