@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" class="dark light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+
+    
+    
+    
+    <title>
+         avail
+        
+    </title>
+
+    
+    <meta property="og:title"
+        content="avail" />
+    
+    
+
+    
+    
+    <meta property="og:description" content="Availability-aware scheduling helper" />
+    
+    
+
+    
+    
+    <meta name="description" content="Availability-aware scheduling helper" />
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+
+    
+    <link rel="alternate" type="application/atom+xml" title="robbie.computer" href="https://robbie.computer/ atom.xml">
+
+
+    
+    
+    <link rel="stylesheet" type="text/css" href=https://robbie.computer/theme/light.css />
+    <link rel="stylesheet" type="text/css" href="https://robbie.computer/theme/dark.css"
+        media="(prefers-color-scheme: dark)" />
+    
+
+    <!-- Set the correct theme in the script -->
+    <script src=https://robbie.computer/js/themetoggle.js></script>
+    
+    <script>
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            setTheme("dark");
+        } else {
+            setTheme("light");
+        }
+    </script>
+    
+
+    <link rel="stylesheet" type="text/css" media="screen" href=https://robbie.computer/main.css />
+
+    
+</head>
+
+
+<body>
+    <div class="content">
+        <header>
+    <div class="main">
+        <a href=https:&#x2F;&#x2F;robbie.computer>robbie.computer</a>
+
+        <div class="socials">
+            
+        </div>
+    </div>
+
+    <nav>
+        
+        <a href=https://robbie.computer/projects style="margin-left: 0.5em">&#x2F;projects</a>
+        
+        <a href=https://robbie.computer/posts style="margin-left: 0.5em">&#x2F;posts</a>
+        
+        <a href=https://robbie.computer/about style="margin-left: 0.5em">&#x2F;about</a>
+        
+
+        
+    </nav>
+</header>
+
+
+        
+        
+    
+<main>
+    <article>
+        <div class="title">
+            
+            
+<div class="page-header">
+    avail
+</div>
+
+
+            <div class="meta">
+                
+
+                
+
+                
+
+                
+                
+
+                
+                
+
+                
+
+            </div>
+        </div>
+
+        
+
+        
+        
+
+        <section class="body">
+            <p><img src="/projects/img/avail.webp" alt="Avail" /></p>
+<h2 id="hosted-service">Hosted service</h2>
+<p><a rel="external" href="https://avail.website">Avail</a> is an availability-aware scheduling tool designed to reduce coordination overhead by making schedules easy to publish and consume. Each user gets a canonical, shareable URL that returns both a clean plaintext view (<code>/username</code>) and a structured JSON API (<code>/username.json</code>), so it works equally well in a browser, via <code>curl</code>, or inside automations.</p>
+<p>Under the hood, it pairs a <a rel="external" href="https://preactjs.com/">Preact</a> + <a rel="external" href="https://vitejs.dev/">Vite</a> frontend with a <a rel="external" href="https://go.dev/">Go</a> API and <a rel="external" href="https://www.postgresql.org/">PostgreSQL</a> (via <a rel="external" href="https://supabase.com/">Supabase</a>), with a routing setup that preserves simple public URLs while still supporting authenticated updates and API token workflows.</p>
+<h2 id="open-source-library">Open source library</h2>
+<h1 id="avail-the-availability-tool-i-wanted-so-i-open-sourced-it">Avail: The Availability Tool I Wanted (So I Open-Sourced It)</h1>
+<p>I built <strong>avail</strong> because the workflow I wanted didn’t really exist: a fast, trustworthy way to generate clean availability from my real calendar without pushing people into yet another scheduling tool. Most products try to <em>book the meeting</em>. I just wanted to <em>assist the conversation</em>.</p>
+<p><strong>avail</strong> is a local-first, privacy-first CLI that reads your calendar, computes free/busy time within your working hours, and outputs human-friendly availability you can paste into email, Slack, or anywhere else. It can also push <em>derived availability only</em> to a hosted API when you want a shareable link — event details never have to leave your machine.</p>
+<h2 id="what-it-does-well">What it does well</h2>
+<ul>
+<li>Generates up-to-date availability from your actual calendar</li>
+<li>Stays out of the way: terminal-first, clipboard-friendly output</li>
+<li>Keeps a strong privacy boundary: read-only integrations and derived data sharing</li>
+<li>Works across multiple input modes: Google Calendar (OAuth), public <code>.ics</code> URLs, or local <code>.ics</code> files</li>
+</ul>
+<h2 id="how-it-works-under-the-hood">How it works (under the hood)</h2>
+<p>The project is split into a few clean layers:</p>
+<ul>
+<li><code>cmd/avail/</code> wires up the CLI entry point</li>
+<li><code>internal/cli/</code> implements commands like <code>auth</code>, <code>show</code>, <code>copy</code>, and <code>push</code></li>
+<li><code>internal/calendar/</code> defines a provider interface and multiple implementations (Google API, public URL, local file)</li>
+<li><code>pkg/engine/</code> is the core availability engine</li>
+<li><code>pkg/availability/</code> holds the core types (<code>Event</code>, <code>TimeBlock</code>, <code>WorkHours</code>)</li>
+</ul>
+<p>The core engine is intentionally small and explicit. It:</p>
+<ol>
+<li>Normalises the date range to day boundaries</li>
+<li>Filters events that overlap each day</li>
+<li>Subtracts those events (plus configurable buffers) from working hours</li>
+<li>Emits only blocks large enough for your meeting duration</li>
+<li>Groups and formats the results for humans</li>
+</ol>
+<p>That design keeps the scheduling logic testable and provider-agnostic. Calendar providers just return <code>[]Event</code>; the engine does the rest.</p>
+<h2 id="why-open-source">Why open source</h2>
+<p>This tool sits close to sensitive data. Open-sourcing it is a feature, not a vibe. You can inspect the privacy model, run it locally, and adapt it to your own workflow. The availability engine is reusable by design, and the provider boundary makes it straightforward to add new integrations.</p>
+<p>If you’ve ever thought “I don’t want a booking page — I just want accurate availability,” avail is for you.</p>
+<p><a rel="external" href="https://github.com/robgyiv/avail">https://github.com/robgyiv/avail</a></p>
+
+        </section>
+    </article>
+</main>
+
+
+
+        
+
+    </div>
+</body>
+
+</html>
