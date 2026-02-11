@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" class="dark light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+
+    
+    
+    
+    <title>
+         Jumping Into a Codebase Built by a Human and a Machine
+        
+    </title>
+
+    
+    <meta property="og:title"
+        content="Jumping Into a Codebase Built by a Human and a Machine" />
+    
+    
+
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+
+    
+    <link rel="alternate" type="application/atom+xml" title="robbie.computer" href="https://robbie.computer/ atom.xml">
+
+
+    
+    
+    <link rel="stylesheet" type="text/css" href=https://robbie.computer/theme/light.css />
+    <link rel="stylesheet" type="text/css" href="https://robbie.computer/theme/dark.css"
+        media="(prefers-color-scheme: dark)" />
+    
+
+    <!-- Set the correct theme in the script -->
+    <script src=https://robbie.computer/js/themetoggle.js></script>
+    
+    <script>
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            setTheme("dark");
+        } else {
+            setTheme("light");
+        }
+    </script>
+    
+
+    <link rel="stylesheet" type="text/css" media="screen" href=https://robbie.computer/main.css />
+
+    
+</head>
+
+
+<body>
+    <div class="content">
+        <header>
+    <div class="main">
+        <a href=https:&#x2F;&#x2F;robbie.computer>robbie.computer</a>
+
+        <div class="socials">
+            
+        </div>
+    </div>
+
+    <nav>
+        
+        <a href=https://robbie.computer/projects style="margin-left: 0.5em">&#x2F;projects</a>
+        
+        <a href=https://robbie.computer/posts style="margin-left: 0.5em">&#x2F;posts</a>
+        
+        <a href=https://robbie.computer/about style="margin-left: 0.5em">&#x2F;about</a>
+        
+
+        
+    </nav>
+</header>
+
+
+        
+        
+    
+<main>
+    <article>
+        <div class="title">
+            
+            
+<div class="page-header">
+    Jumping Into a Codebase Built by a Human and a Machine
+</div>
+
+
+            <div class="meta">
+                
+                Posted on <time>2026-02-11</time>
+                
+
+                
+
+                
+
+                
+                
+
+                
+                
+
+                
+
+            </div>
+        </div>
+
+        
+
+        
+        
+
+        <section class="body">
+            <p>I spend most of my time programming in English now — not Python or TypeScript or Bash. We're in an interesting time to be building, and agentic coding has come far enough that using it is almost no longer optional. I've been working with a machine copilot for a few years already, but the agentic workflows have got so good recently that my day-to-day looks very different from even a year ago.</p>
+<p>Camrin and I met while travelling, and after we both got back home he told me about Plinza — an app that helps friend groups stop debating endlessly in the group chat and actually pick a plan. Where to eat, what to do, when to meet. It's a real problem we've all had: getting people out of decision paralysis and out into the world. I've worked in teams of all sizes, but up until recently all of my side projects had been a solo endeavour. This seemed like a great opportunity to try something new.</p>
+<p>Plinza had already been scaffolded and developed by Camrin and Claude. I was joining a codebase built by a human–AI pair, which is a genuinely novel experience. My job was to make it ready for real collaboration. I was impressed by their choices: Next.js, TypeScript, Postgres from Supabase — a solid foundation. Much has been said about "AI slop", and I agree with a lot of it, but reviewing the code I was pleasantly surprised. The structure was coherent, naming was consistent, and the architectural decisions made sense. It wasn't perfect, but it was a far cry from the spaghetti you might expect from generated code.</p>
+<p>Any time I'm dropped into a new codebase, I always do the same thing: review the tests, CI/CD, and code quality. It's a great way to get familiar quickly as it touches every surface. So my first task was simple — make the codebase more consistent. When you're using multiple models at any point to build an app, this becomes critical. The models don't share context with each other, so without strong guardrails the codebase drifts fast.</p>
+<p>Luckily, code consistency is already a solved problem. All sensible codebases already have rules so that linting and formatting aren't up for debate and are handled automatically. I'd used tools like <code>prettier</code>, <code>ruff</code>, and <code>black</code> before, but given our codebase was firmly JS I looked into <code>biome</code>. It's <em>very</em> opinionated, but the performance is great (thanks, Rust) and it combines a linter, formatter, and import order checker in one package. After a few tweaks to its config — mainly spaces over tabs — I ran it on the codebase and opened my first PR.</p>
+<p>Next up: capture what I've learnt into the readme so future me will remember why decisions were made and how it all fits together. When you're developing solo, you can hold a lot of context in your head, but when you're working with other people — and with LLMs — it's good practice to keep a record. Camrin had already kept an agent log and markdown files for key decisions, which was great. I made a small adjustment: moved them to a specific directory and made <code>AGENTS.md</code> less verbose but more actionable. The key addition was requiring the LLMs to run code linting steps before submitting changes. It sounds simple, but when half your team is non-human, enforcing quality at the tooling level is the only reliable approach. You can't rely on code review habits that don't exist.</p>
+<p>I added two simple GitHub workflows to double-check these steps run in PRs and that the project can be built successfully, saving any future headaches. We had a call about how to collaborate now that there are two of us, and my suggestion to Camrin was straightforward: trunk-based development, code-related communication in GitHub PRs or issues, keep it simple.</p>
+<p>We've done more since, but the real takeaway for me has been this: joining a codebase built by a human–AI pair isn't as alien as it sounds. The code quality challenges aren't fundamentally different — they're just amplified. Consistency matters more, documentation matters more, and automated guardrails go from "nice to have" to essential. If you're building with AI collaborators, invest in the foundations early. It pays off fast.</p>
+
+        </section>
+    </article>
+</main>
+
+
+
+        
+
+    </div>
+</body>
+
+</html>
