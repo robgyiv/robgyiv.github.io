@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark light">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -11,14 +11,9 @@
     
     
     
-    <title>
-         About
-        
-    </title>
-
+    <title>About</title>
     
-    <meta property="og:title"
-        content="About" />
+    <meta property="og:title" content="About" />
     
     
 
@@ -34,44 +29,20 @@
     
 
     
-    
-
-    
-    
-
-    
-    
-
-    
-    
+    <link rel="alternate" type="application/atom+xml" title="robbie.computer" href="https://robbie.computer/atom.xml">
 
     
 
     
-    <link rel="alternate" type="application/atom+xml" title="robbie.computer" href="https://robbie.computer/ atom.xml">
-
+    <link rel="stylesheet" type="text/css" media="screen" href="https://robbie.computer/main.css" />
 
     
-    
-    <link rel="stylesheet" type="text/css" href=https://robbie.computer/theme/light.css />
-    <link rel="stylesheet" type="text/css" href="https://robbie.computer/theme/dark.css"
-        media="(prefers-color-scheme: dark)" />
-    
+    <script>(function(){var c=['#FF5500','#F0E800','#5500FF'];document.documentElement.style.setProperty('--accent',c[Math.floor(Math.random()*c.length)]);})();</script>
 
-    <!-- Set the correct theme in the script -->
-    <script src=https://robbie.computer/js/themetoggle.js></script>
     
-    <script>
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            setTheme("dark");
-        } else {
-            setTheme("light");
-        }
-    </script>
+    <script>(function(){if(localStorage.getItem('rave-mode')==='fluoro'){document.documentElement.classList.add('fluoro');}})();</script>
+
     
-
-    <link rel="stylesheet" type="text/css" media="screen" href=https://robbie.computer/main.css />
-
     
 </head>
 
@@ -80,34 +51,30 @@
     <div class="content">
         <header>
     <div class="main">
-        <a href=https:&#x2F;&#x2F;robbie.computer>robbie.computer</a>
+        <a href="https:&#x2F;&#x2F;robbie.computer">robbie.computer</a>
 
-        <div class="socials">
-            
-        </div>
+        
     </div>
 
     <nav>
         
-        <a href=https://robbie.computer/projects style="margin-left: 0.5em">&#x2F;projects</a>
+        <a href="https://robbie.computer/projects">&#x2F;projects</a>
         
-        <a href=https://robbie.computer/posts style="margin-left: 0.5em">&#x2F;posts</a>
+        <a href="https://robbie.computer/posts">&#x2F;posts</a>
         
-        <a href=https://robbie.computer/about style="margin-left: 0.5em">&#x2F;about</a>
+        <a href="https://robbie.computer/about">&#x2F;about</a>
         
 
-        
+        <button class="mode-toggle" id="mode-toggle" aria-label="Toggle fluoro mode" title="Toggle fluoro / paper mode">FLUORO</button>
     </nav>
 </header>
 
 
         
-        
     
 <main>
     <article>
         <div class="title">
-            
             
 <div class="page-header">
     About
@@ -122,19 +89,15 @@
                 
 
                 
-                
-
-                
-                
 
                 
 
+                
             </div>
         </div>
 
         
 
-        
         
 
         <section class="body">
@@ -147,10 +110,34 @@
 </main>
 
 
-
-        
-
     </div>
+
+    <script>
+    (function () {
+        var btn = document.getElementById('mode-toggle');
+        if (!btn) return;
+
+        function updateLabel() {
+            var isFluoro = document.documentElement.classList.contains('fluoro');
+            btn.textContent = isFluoro ? 'PAPER' : 'FLUORO';
+            btn.title = isFluoro ? 'Switch to paper mode' : 'Switch to fluoro mode';
+        }
+
+        updateLabel();
+
+        btn.addEventListener('click', function () {
+            var html = document.documentElement;
+            if (html.classList.contains('fluoro')) {
+                html.classList.remove('fluoro');
+                localStorage.setItem('rave-mode', 'paper');
+            } else {
+                html.classList.add('fluoro');
+                localStorage.setItem('rave-mode', 'fluoro');
+            }
+            updateLabel();
+        });
+    })();
+    </script>
 </body>
 
 </html>
