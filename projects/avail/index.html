@@ -41,10 +41,10 @@
     <link rel="stylesheet" type="text/css" media="screen" href="https://robbie.computer/main.css" />
 
     
-    <script>(function(){var c=['#FF5500','#F0E800','#5500FF'];document.documentElement.style.setProperty('--accent',c[Math.floor(Math.random()*c.length)]);})();</script>
+    <script>(function(){var c=[['orange','#FF5500'],['yellow','#F0E800'],['violet','#5500FF']];var pick=c[Math.floor(Math.random()*c.length)];var html=document.documentElement;html.style.setProperty('--accent',pick[1]);html.setAttribute('data-accent',pick[0]);})();</script>
 
     
-    <script>(function(){if(localStorage.getItem('rave-mode')==='fluoro'){document.documentElement.classList.add('fluoro');}})();</script>
+    <script>(function(){var m=localStorage.getItem('rave-mode');if(m==='fluoro'){document.documentElement.classList.add('fluoro');}else if(m==='dark'){document.documentElement.classList.add('dark');}else if(!m&&window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.classList.add('dark');}})();</script>
 
     
     
@@ -55,21 +55,21 @@
     <div class="content">
         <header>
     <div class="main">
-        <a href="https:&#x2F;&#x2F;robbie.computer">robbie.computer</a>
+        <a href="https://robbie.computer">robbie.computer</a>
 
         
     </div>
 
     <nav>
         
-        <a href="https://robbie.computer/projects">&#x2F;projects</a>
+        <a href="https://robbie.computer/projects">/projects</a>
         
-        <a href="https://robbie.computer/posts">&#x2F;posts</a>
+        <a href="https://robbie.computer/posts">/posts</a>
         
-        <a href="https://robbie.computer/about">&#x2F;about</a>
+        <a href="https://robbie.computer/about">/about</a>
         
 
-        <button class="mode-toggle" id="mode-toggle" aria-label="Toggle fluoro mode" title="Toggle fluoro / paper mode">FLUORO</button>
+        <button class="mode-toggle" id="mode-toggle" aria-label="Toggle display mode" title="Cycle display mode">DARK</button>
     </nav>
 </header>
 
@@ -155,23 +155,41 @@
         var btn = document.getElementById('mode-toggle');
         if (!btn) return;
 
+        // Cycle: paper → dark → fluoro → paper
+        // Button label always shows the NEXT mode
+
+        function currentMode() {
+            var html = document.documentElement;
+            if (html.classList.contains('fluoro')) return 'fluoro';
+            if (html.classList.contains('dark'))   return 'dark';
+            return 'paper';
+        }
+
+        function applyMode(mode) {
+            var html = document.documentElement;
+            html.classList.remove('fluoro', 'dark');
+            if (mode === 'fluoro') html.classList.add('fluoro');
+            if (mode === 'dark')   html.classList.add('dark');
+            localStorage.setItem('rave-mode', mode);
+        }
+
+        function nextMode(mode) {
+            if (mode === 'paper')  return 'dark';
+            if (mode === 'dark')   return 'fluoro';
+            return 'paper';
+        }
+
         function updateLabel() {
-            var isFluoro = document.documentElement.classList.contains('fluoro');
-            btn.textContent = isFluoro ? 'PAPER' : 'FLUORO';
-            btn.title = isFluoro ? 'Switch to paper mode' : 'Switch to fluoro mode';
+            var next = nextMode(currentMode());
+            btn.textContent = next.toUpperCase();
+            btn.title = 'Switch to ' + next + ' mode';
+            btn.setAttribute('aria-label', 'Switch to ' + next + ' mode');
         }
 
         updateLabel();
 
         btn.addEventListener('click', function () {
-            var html = document.documentElement;
-            if (html.classList.contains('fluoro')) {
-                html.classList.remove('fluoro');
-                localStorage.setItem('rave-mode', 'paper');
-            } else {
-                html.classList.add('fluoro');
-                localStorage.setItem('rave-mode', 'fluoro');
-            }
+            applyMode(nextMode(currentMode()));
             updateLabel();
         });
     })();

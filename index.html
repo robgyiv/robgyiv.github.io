@@ -37,10 +37,10 @@
     <link rel="stylesheet" type="text/css" media="screen" href="https://robbie.computer/main.css" />
 
     
-    <script>(function(){var c=['#FF5500','#F0E800','#5500FF'];document.documentElement.style.setProperty('--accent',c[Math.floor(Math.random()*c.length)]);})();</script>
+    <script>(function(){var c=[['orange','#FF5500'],['yellow','#F0E800'],['violet','#5500FF']];var pick=c[Math.floor(Math.random()*c.length)];var html=document.documentElement;html.style.setProperty('--accent',pick[1]);html.setAttribute('data-accent',pick[0]);})();</script>
 
     
-    <script>(function(){if(localStorage.getItem('rave-mode')==='fluoro'){document.documentElement.classList.add('fluoro');}})();</script>
+    <script>(function(){var m=localStorage.getItem('rave-mode');if(m==='fluoro'){document.documentElement.classList.add('fluoro');}else if(m==='dark'){document.documentElement.classList.add('dark');}else if(!m&&window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.classList.add('dark');}})();</script>
 
     
     
@@ -51,21 +51,21 @@
     <div class="content">
         <header>
     <div class="main">
-        <a href="https:&#x2F;&#x2F;robbie.computer">robbie.computer</a>
+        <a href="https://robbie.computer">robbie.computer</a>
 
         
     </div>
 
     <nav>
         
-        <a href="https://robbie.computer/projects">&#x2F;projects</a>
+        <a href="https://robbie.computer/projects">/projects</a>
         
-        <a href="https://robbie.computer/posts">&#x2F;posts</a>
+        <a href="https://robbie.computer/posts">/posts</a>
         
-        <a href="https://robbie.computer/about">&#x2F;about</a>
+        <a href="https://robbie.computer/about">/about</a>
         
 
-        <button class="mode-toggle" id="mode-toggle" aria-label="Toggle fluoro mode" title="Toggle fluoro / paper mode">FLUORO</button>
+        <button class="mode-toggle" id="mode-toggle" aria-label="Toggle display mode" title="Cycle display mode">DARK</button>
     </nav>
 </header>
 
@@ -83,8 +83,8 @@
     <div class="card">
         
         
-        <a href="https:&#x2F;&#x2F;robbie.computer&#x2F;projects&#x2F;avail&#x2F;">
-            <img class="card-image" alt="&#x2F;projects&#x2F;img&#x2F;avail.webp" src="https://robbie.computer/projects/img/avail.webp" />
+        <a href="https://robbie.computer/projects/avail/">
+            <img class="card-image" alt="/projects/img/avail.webp" src="https://robbie.computer/projects/img/avail.webp" />
         </a>
         
         
@@ -92,7 +92,7 @@
         <div class="card-info">
             <h1 class="card-title">
                 
-                <a href="https:&#x2F;&#x2F;robbie.computer&#x2F;projects&#x2F;avail&#x2F;">avail</a>
+                <a href="https://robbie.computer/projects/avail/">avail</a>
                 
             </h1>
 
@@ -110,8 +110,8 @@
     <div class="card">
         
         
-        <a href="https:&#x2F;&#x2F;robbie.computer&#x2F;projects&#x2F;findmebylink&#x2F;">
-            <img class="card-image" alt="&#x2F;projects&#x2F;img&#x2F;findmebylink.webp" src="https://robbie.computer/projects/img/findmebylink.webp" />
+        <a href="https://robbie.computer/projects/findmebylink/">
+            <img class="card-image" alt="/projects/img/findmebylink.webp" src="https://robbie.computer/projects/img/findmebylink.webp" />
         </a>
         
         
@@ -119,7 +119,7 @@
         <div class="card-info">
             <h1 class="card-title">
                 
-                <a href="https:&#x2F;&#x2F;robbie.computer&#x2F;projects&#x2F;findmebylink&#x2F;">FindMeByLink</a>
+                <a href="https://robbie.computer/projects/findmebylink/">FindMeByLink</a>
                 
             </h1>
 
@@ -137,8 +137,8 @@
     <div class="card">
         
         
-        <a href="https:&#x2F;&#x2F;robbie.computer&#x2F;projects&#x2F;jobapplicator98&#x2F;">
-            <img class="card-image" alt="&#x2F;projects&#x2F;img&#x2F;jobapplicator98.webp" src="https://robbie.computer/projects/img/jobapplicator98.webp" />
+        <a href="https://robbie.computer/projects/jobapplicator98/">
+            <img class="card-image" alt="/projects/img/jobapplicator98.webp" src="https://robbie.computer/projects/img/jobapplicator98.webp" />
         </a>
         
         
@@ -146,7 +146,7 @@
         <div class="card-info">
             <h1 class="card-title">
                 
-                <a href="https:&#x2F;&#x2F;robbie.computer&#x2F;projects&#x2F;jobapplicator98&#x2F;">JobApplicator98</a>
+                <a href="https://robbie.computer/projects/jobapplicator98/">JobApplicator98</a>
                 
             </h1>
 
@@ -164,8 +164,8 @@
     <div class="card">
         
         
-        <a href="https:&#x2F;&#x2F;robbie.computer&#x2F;projects&#x2F;wordmorpher&#x2F;">
-            <img class="card-image" alt="&#x2F;projects&#x2F;img&#x2F;wordmorpher.webp" src="https://robbie.computer/projects/img/wordmorpher.webp" />
+        <a href="https://robbie.computer/projects/wordmorpher/">
+            <img class="card-image" alt="/projects/img/wordmorpher.webp" src="https://robbie.computer/projects/img/wordmorpher.webp" />
         </a>
         
         
@@ -173,7 +173,7 @@
         <div class="card-info">
             <h1 class="card-title">
                 
-                <a href="https:&#x2F;&#x2F;robbie.computer&#x2F;projects&#x2F;wordmorpher&#x2F;">Word Morpher</a>
+                <a href="https://robbie.computer/projects/wordmorpher/">Word Morpher</a>
                 
             </h1>
 
@@ -191,8 +191,8 @@
     <div class="card">
         
         
-        <a href="https:&#x2F;&#x2F;robbie.computer&#x2F;projects&#x2F;youarehere&#x2F;">
-            <img class="card-image" alt="&#x2F;projects&#x2F;img&#x2F;youarehere.webp" src="https://robbie.computer/projects/img/youarehere.webp" />
+        <a href="https://robbie.computer/projects/youarehere/">
+            <img class="card-image" alt="/projects/img/youarehere.webp" src="https://robbie.computer/projects/img/youarehere.webp" />
         </a>
         
         
@@ -200,7 +200,7 @@
         <div class="card-info">
             <h1 class="card-title">
                 
-                <a href="https:&#x2F;&#x2F;robbie.computer&#x2F;projects&#x2F;youarehere&#x2F;">You Are Here</a>
+                <a href="https://robbie.computer/projects/youarehere/">You Are Here</a>
                 
             </h1>
 
@@ -218,8 +218,8 @@
     <div class="card">
         
         
-        <a href="https:&#x2F;&#x2F;robbie.computer&#x2F;projects&#x2F;checkboxes&#x2F;">
-            <img class="card-image" alt="&#x2F;projects&#x2F;img&#x2F;checkboxes.webp" src="https://robbie.computer/projects/img/checkboxes.webp" />
+        <a href="https://robbie.computer/projects/checkboxes/">
+            <img class="card-image" alt="/projects/img/checkboxes.webp" src="https://robbie.computer/projects/img/checkboxes.webp" />
         </a>
         
         
@@ -227,7 +227,7 @@
         <div class="card-info">
             <h1 class="card-title">
                 
-                <a href="https:&#x2F;&#x2F;robbie.computer&#x2F;projects&#x2F;checkboxes&#x2F;">Checkboxes</a>
+                <a href="https://robbie.computer/projects/checkboxes/">Checkboxes</a>
                 
             </h1>
 
@@ -245,8 +245,8 @@
     <div class="card">
         
         
-        <a href="https:&#x2F;&#x2F;dev.robbie.computer&#x2F;flowcube">
-            <img class="card-image" alt="&#x2F;projects&#x2F;img&#x2F;flowcube.webp" src="https://robbie.computer/projects/img/flowcube.webp" />
+        <a href="https://dev.robbie.computer/flowcube">
+            <img class="card-image" alt="/projects/img/flowcube.webp" src="https://robbie.computer/projects/img/flowcube.webp" />
         </a>
         
         
@@ -254,7 +254,7 @@
         <div class="card-info">
             <h1 class="card-title">
                 
-                <a href="https:&#x2F;&#x2F;dev.robbie.computer&#x2F;flowcube">flowcube</a>
+                <a href="https://dev.robbie.computer/flowcube">flowcube</a>
                 
             </h1>
 
@@ -272,8 +272,8 @@
     <div class="card">
         
         
-        <a href="https:&#x2F;&#x2F;dev.robbie.computer&#x2F;flowfield">
-            <img class="card-image" alt="&#x2F;projects&#x2F;img&#x2F;flowfield.webp" src="https://robbie.computer/projects/img/flowfield.webp" />
+        <a href="https://dev.robbie.computer/flowfield">
+            <img class="card-image" alt="/projects/img/flowfield.webp" src="https://robbie.computer/projects/img/flowfield.webp" />
         </a>
         
         
@@ -281,7 +281,7 @@
         <div class="card-info">
             <h1 class="card-title">
                 
-                <a href="https:&#x2F;&#x2F;dev.robbie.computer&#x2F;flowfield">Flowfield</a>
+                <a href="https://dev.robbie.computer/flowfield">Flowfield</a>
                 
             </h1>
 
@@ -299,8 +299,8 @@
     <div class="card">
         
         
-        <a href="https:&#x2F;&#x2F;robbie.computer&#x2F;projects&#x2F;cool-frog&#x2F;">
-            <img class="card-image" alt="&#x2F;projects&#x2F;img&#x2F;coolfrog.webp" src="https://robbie.computer/projects/img/coolfrog.webp" />
+        <a href="https://robbie.computer/projects/cool-frog/">
+            <img class="card-image" alt="/projects/img/coolfrog.webp" src="https://robbie.computer/projects/img/coolfrog.webp" />
         </a>
         
         
@@ -308,7 +308,7 @@
         <div class="card-info">
             <h1 class="card-title">
                 
-                <a href="https:&#x2F;&#x2F;robbie.computer&#x2F;projects&#x2F;cool-frog&#x2F;">A cool frog</a>
+                <a href="https://robbie.computer/projects/cool-frog/">A cool frog</a>
                 
             </h1>
 
@@ -317,7 +317,7 @@
 
             <div class="card-description">
                 
-                It&#x27;s just a cool frog
+                It&#39;s just a cool frog
                 
             </div>
         </div>
@@ -326,7 +326,7 @@
     <div class="card">
         
         
-        <a href="https:&#x2F;&#x2F;faculty.ai">
+        <a href="https://faculty.ai">
             <div class="card-image-placeholder">
                 <canvas id="pixelCanvas-9" width="160" height="160" class="pixel-art-canvas"></canvas>
             </div>
@@ -337,7 +337,7 @@
         <div class="card-info">
             <h1 class="card-title">
                 
-                <a href="https:&#x2F;&#x2F;faculty.ai">Frontier</a>
+                <a href="https://faculty.ai">Frontier</a>
                 
             </h1>
 
@@ -355,7 +355,7 @@
     <div class="card">
         
         
-        <a href="https:&#x2F;&#x2F;github.com&#x2F;robgyiv&#x2F;git-find-rs">
+        <a href="https://github.com/robgyiv/git-find-rs">
             <div class="card-image-placeholder">
                 <canvas id="pixelCanvas-10" width="160" height="160" class="pixel-art-canvas"></canvas>
             </div>
@@ -366,7 +366,7 @@
         <div class="card-info">
             <h1 class="card-title">
                 
-                <a href="https:&#x2F;&#x2F;github.com&#x2F;robgyiv&#x2F;git-find-rs">git-find-rs</a>
+                <a href="https://github.com/robgyiv/git-find-rs">git-find-rs</a>
                 
             </h1>
 
@@ -384,7 +384,7 @@
     <div class="card">
         
         
-        <a href="https:&#x2F;&#x2F;github.com&#x2F;robgyiv&#x2F;git-web-line">
+        <a href="https://github.com/robgyiv/git-web-line">
             <div class="card-image-placeholder">
                 <canvas id="pixelCanvas-11" width="160" height="160" class="pixel-art-canvas"></canvas>
             </div>
@@ -395,7 +395,7 @@
         <div class="card-info">
             <h1 class="card-title">
                 
-                <a href="https:&#x2F;&#x2F;github.com&#x2F;robgyiv&#x2F;git-web-line">git-web-line</a>
+                <a href="https://github.com/robgyiv/git-web-line">git-web-line</a>
                 
             </h1>
 
@@ -413,8 +413,8 @@
     <div class="card">
         
         
-        <a href="https:&#x2F;&#x2F;vimeo.com&#x2F;464978924">
-            <img class="card-image" alt="&#x2F;projects&#x2F;img&#x2F;ledpanel.jpeg" src="https://robbie.computer/projects/img/ledpanel.jpeg" />
+        <a href="https://vimeo.com/464978924">
+            <img class="card-image" alt="/projects/img/ledpanel.jpeg" src="https://robbie.computer/projects/img/ledpanel.jpeg" />
         </a>
         
         
@@ -422,7 +422,7 @@
         <div class="card-info">
             <h1 class="card-title">
                 
-                <a href="https:&#x2F;&#x2F;vimeo.com&#x2F;464978924">LED panel</a>
+                <a href="https://vimeo.com/464978924">LED panel</a>
                 
             </h1>
 
@@ -472,23 +472,41 @@
         var btn = document.getElementById('mode-toggle');
         if (!btn) return;
 
+        // Cycle: paper → dark → fluoro → paper
+        // Button label always shows the NEXT mode
+
+        function currentMode() {
+            var html = document.documentElement;
+            if (html.classList.contains('fluoro')) return 'fluoro';
+            if (html.classList.contains('dark'))   return 'dark';
+            return 'paper';
+        }
+
+        function applyMode(mode) {
+            var html = document.documentElement;
+            html.classList.remove('fluoro', 'dark');
+            if (mode === 'fluoro') html.classList.add('fluoro');
+            if (mode === 'dark')   html.classList.add('dark');
+            localStorage.setItem('rave-mode', mode);
+        }
+
+        function nextMode(mode) {
+            if (mode === 'paper')  return 'dark';
+            if (mode === 'dark')   return 'fluoro';
+            return 'paper';
+        }
+
         function updateLabel() {
-            var isFluoro = document.documentElement.classList.contains('fluoro');
-            btn.textContent = isFluoro ? 'PAPER' : 'FLUORO';
-            btn.title = isFluoro ? 'Switch to paper mode' : 'Switch to fluoro mode';
+            var next = nextMode(currentMode());
+            btn.textContent = next.toUpperCase();
+            btn.title = 'Switch to ' + next + ' mode';
+            btn.setAttribute('aria-label', 'Switch to ' + next + ' mode');
         }
 
         updateLabel();
 
         btn.addEventListener('click', function () {
-            var html = document.documentElement;
-            if (html.classList.contains('fluoro')) {
-                html.classList.remove('fluoro');
-                localStorage.setItem('rave-mode', 'paper');
-            } else {
-                html.classList.add('fluoro');
-                localStorage.setItem('rave-mode', 'fluoro');
-            }
+            applyMode(nextMode(currentMode()));
             updateLabel();
         });
     })();
