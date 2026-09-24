@@ -38,79 +38,88 @@
     
 
     
+    <script>(function(){
+      var hues = [{n:'yellow',h:105},{n:'orange',h:45},{n:'pink',h:355},{n:'purple',h:295},{n:'green',h:145},{n:'cyan',h:210}];
+      var html = document.documentElement;
+      var lastHue = parseFloat(localStorage.getItem('rave-hue'));
+      var override = localStorage.getItem('rave-hue-override');
+      var hue, source;
+      if (override !== null) { hue = parseFloat(override); source = 'you'; }
+      else {
+        var pool = hues.filter(function(x){ return x.h !== lastHue; });
+        var pick = pool[Math.floor(Math.random()*pool.length)];
+        hue = pick.h; source = 'random';
+      }
+      html.style.setProperty('--h', hue);
+      html.setAttribute('data-hue-source', source);
+      localStorage.setItem('rave-hue', hue);
+      var theme = localStorage.getItem('rave-theme');
+      if (!theme) theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'fluoro';
+      html.classList.add(theme);
+    })();</script>
+
+    
     <link rel="stylesheet" type="text/css" media="screen" href="https://robbie.computer/main.css" />
-
-    
-    <script>(function(){var c=[['orange','#FF5500'],['yellow','#F0E800'],['violet','#5500FF']];var pick=c[Math.floor(Math.random()*c.length)];var html=document.documentElement;html.style.setProperty('--accent',pick[1]);html.setAttribute('data-accent',pick[0]);})();</script>
-
-    
-    <script>(function(){var m=localStorage.getItem('rave-mode');if(m==='fluoro'){document.documentElement.classList.add('fluoro');}else if(m==='dark'){document.documentElement.classList.add('dark');}else if(!m&&window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.classList.add('dark');}})();</script>
 
     
     
 </head>
 
 
-<body>
-    <div class="content">
-        <header>
-    <div class="main">
-        <a href="https://robbie.computer">robbie.computer</a>
+<body data-page-type="project">
+    <canvas id="bg-canvas"></canvas>
 
-        
+    <div class="page-wrap">
+        <div class="container">
+            
+<header class="site-header">
+    <div class="site-header__row1">
+        <a class="logo" href="https://robbie.computer">robbie.computer</a>
+
+        <div class="theme-toggle">
+            <button class="theme-toggle__option" data-theme-option="dark">DARK</button>
+            <button class="theme-toggle__option" data-theme-option="fluoro">FLUORO</button>
+        </div>
     </div>
 
-    <nav>
-        
-        <a href="https://robbie.computer/projects">/projects</a>
-        
-        <a href="https://robbie.computer/posts">/posts</a>
-        
-        <a href="https://robbie.computer/about">/about</a>
-        
-
-        <button class="mode-toggle" id="mode-toggle" aria-label="Toggle display mode" title="Cycle display mode">DARK</button>
-    </nav>
+    <div class="site-header__row2">
+        <nav class="site-nav">
+            
+            <a class="nav-link is-active" href="https://robbie.computer/projects">/projects</a>
+            
+            <a class="nav-link" href="https://robbie.computer/posts">/posts</a>
+            
+            <a class="nav-link" href="https://robbie.computer/about">/about</a>
+            
+        </nav>
+    </div>
 </header>
 
 
-        
-    
-<main>
-    <article>
-        <div class="title">
             
-<div class="page-header">
-    avail
-</div>
+<main class="reading">
+    <a class="back-link" href="https://robbie.computer/projects">← /projects</a>
 
+    <article class="project">
+        <h1>avail</h1>
+        <p class="project-lede">Availability-aware scheduling helper</p>
+        <div class="project-meta">
+            <span class="chip">tool</span>
+            <a class="project-card__ext" href="https://github.com/robgyiv/avail" target="_blank" rel="noopener noreferrer">↗ github.com/robgyiv/avail</a>
+        </div>
+        <div class="project-hero project-card__media project-card__media--crop-top">
+            
+<img class="project-card__dither" src="https://robbie.computer/projects/img/avail.dither.png" alt="" loading="lazy">
+<img class="project-card__photo" src="https://robbie.computer/projects/img/avail.webp" alt="avail" loading="lazy">
 
-            <div class="meta">
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-            </div>
         </div>
 
-        
-
-        
-
-        <section class="body">
-            <p><img src="/projects/img/avail.webp" alt="Avail" /></p>
-<h2 id="hosted-service">Hosted service</h2>
+        <div class="project-body">
+            <h2 id="hosted-service">Hosted service</h2>
 <p><a rel="external" href="https://avail.website">Avail</a> is an availability-aware scheduling tool designed to reduce coordination overhead by making schedules easy to publish and consume. Each user gets a canonical, shareable URL that returns both a clean plaintext view (<code>/username</code>) and a structured JSON API (<code>/username.json</code>), so it works equally well in a browser, via <code>curl</code>, or inside automations.</p>
 <p>Under the hood, it pairs a <a rel="external" href="https://preactjs.com/">Preact</a> + <a rel="external" href="https://vitejs.dev/">Vite</a> frontend with a <a rel="external" href="https://go.dev/">Go</a> API and <a rel="external" href="https://www.postgresql.org/">PostgreSQL</a> (via <a rel="external" href="https://supabase.com/">Supabase</a>), with a routing setup that preserves simple public URLs while still supporting authenticated updates and API token workflows.</p>
-<h2 id="open-source-library">Open source library</h2>
-<h1 id="avail-the-availability-tool-i-wanted-so-i-open-sourced-it">Avail: The Availability Tool I Wanted (So I Open-Sourced It)</h1>
+<p class="project-eyebrow">Open source library</p>
+<h2 id="avail-the-availability-tool-i-wanted-so-i-open-sourced-it">Avail: the availability tool I wanted (so I open-sourced it)</h2>
 <p>I built <strong>avail</strong> because the workflow I wanted didn’t really exist: a fast, trustworthy way to generate clean availability from my real calendar without pushing people into yet another scheduling tool. Most products try to <em>book the meeting</em>. I just wanted to <em>assist the conversation</em>.</p>
 <p><strong>avail</strong> is a local-first, privacy-first CLI that reads your calendar, computes free/busy time within your working hours, and outputs human-friendly availability you can paste into email, Slack, or anywhere else. It can also push <em>derived availability only</em> to a hosted API when you want a shareable link — event details never have to leave your machine.</p>
 <h2 id="what-it-does-well">What it does well</h2>
@@ -122,13 +131,13 @@
 </ul>
 <h2 id="how-it-works-under-the-hood">How it works (under the hood)</h2>
 <p>The project is split into a few clean layers:</p>
-<ul>
-<li><code>cmd/avail/</code> wires up the CLI entry point</li>
-<li><code>internal/cli/</code> implements commands like <code>auth</code>, <code>show</code>, <code>copy</code>, and <code>push</code></li>
-<li><code>internal/calendar/</code> defines a provider interface and multiple implementations (Google API, public URL, local file)</li>
-<li><code>pkg/engine/</code> is the core availability engine</li>
-<li><code>pkg/availability/</code> holds the core types (<code>Event</code>, <code>TimeBlock</code>, <code>WorkHours</code>)</li>
-</ul>
+<div class="file-tree">
+<div class="file-tree__row"><span class="file-tree__path">cmd/avail/</span><span class="file-tree__desc">wires up the CLI entry point</span></div>
+<div class="file-tree__row"><span class="file-tree__path">internal/cli/</span><span class="file-tree__desc">implements commands like auth, show, copy, and push</span></div>
+<div class="file-tree__row"><span class="file-tree__path">internal/calendar/</span><span class="file-tree__desc">defines a provider interface and multiple implementations (Google API, public URL, local file)</span></div>
+<div class="file-tree__row"><span class="file-tree__path">pkg/engine/</span><span class="file-tree__desc">the core availability engine</span></div>
+<div class="file-tree__row"><span class="file-tree__path">pkg/availability/</span><span class="file-tree__desc">holds the core types (Event, TimeBlock, WorkHours)</span></div>
+</div>
 <p>The core engine is intentionally small and explicit. It:</p>
 <ol>
 <li>Normalises the date range to day boundaries</li>
@@ -141,59 +150,29 @@
 <h2 id="why-open-source">Why open source</h2>
 <p>This tool sits close to sensitive data. Open-sourcing it is a feature, not a vibe. You can inspect the privacy model, run it locally, and adapt it to your own workflow. The availability engine is reusable by design, and the provider boundary makes it straightforward to add new integrations.</p>
 <p>If you’ve ever thought “I don’t want a booking page — I just want accurate availability,” avail is for you.</p>
-<p><a rel="external" href="https://github.com/robgyiv/avail">https://github.com/robgyiv/avail</a></p>
 
-        </section>
+        </div>
     </article>
 </main>
 
 
+            <footer class="site-footer">
+    <div class="site-footer__stats">DOM ready in <span id="dom-ready-stat">0</span>ms</div>
+    <div class="site-footer__hue">
+        <span class="hue-swatch"></span>
+        hue <span id="hue-value">–</span>° · <span id="hue-source">random on load</span>
+        <button id="hue-reroll" class="reroll-link">Reroll</button>
+        <a class="site-footer__github" href="https://github.com/robgyiv" target="_blank" rel="noopener noreferrer">↗ github</a>
+    </div>
+</footer>
+
+        </div>
     </div>
 
-    <script>
-    (function () {
-        var btn = document.getElementById('mode-toggle');
-        if (!btn) return;
-
-        // Cycle: paper → dark → fluoro → paper
-        // Button label always shows the NEXT mode
-
-        function currentMode() {
-            var html = document.documentElement;
-            if (html.classList.contains('fluoro')) return 'fluoro';
-            if (html.classList.contains('dark'))   return 'dark';
-            return 'paper';
-        }
-
-        function applyMode(mode) {
-            var html = document.documentElement;
-            html.classList.remove('fluoro', 'dark');
-            if (mode === 'fluoro') html.classList.add('fluoro');
-            if (mode === 'dark')   html.classList.add('dark');
-            localStorage.setItem('rave-mode', mode);
-        }
-
-        function nextMode(mode) {
-            if (mode === 'paper')  return 'dark';
-            if (mode === 'dark')   return 'fluoro';
-            return 'paper';
-        }
-
-        function updateLabel() {
-            var next = nextMode(currentMode());
-            btn.textContent = next.toUpperCase();
-            btn.title = 'Switch to ' + next + ' mode';
-            btn.setAttribute('aria-label', 'Switch to ' + next + ' mode');
-        }
-
-        updateLabel();
-
-        btn.addEventListener('click', function () {
-            applyMode(nextMode(currentMode()));
-            updateLabel();
-        });
-    })();
-    </script>
+    <script src="https://robbie.computer/js/reveal.js" defer></script>
+    <script src="https://robbie.computer/js/background.js" defer></script>
+    <script src="https://robbie.computer/js/flowfield.js" defer></script>
+    <script src="https://robbie.computer/js/state.js" defer></script>
 </body>
 
 </html>
