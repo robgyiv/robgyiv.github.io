@@ -38,126 +38,104 @@
     
 
     
+    <script>(function(){
+      var hues = [{n:'yellow',h:105},{n:'orange',h:45},{n:'pink',h:355},{n:'purple',h:295},{n:'green',h:145},{n:'cyan',h:210}];
+      var html = document.documentElement;
+      var lastHue = parseFloat(localStorage.getItem('rave-hue'));
+      var override = localStorage.getItem('rave-hue-override');
+      var hue, source;
+      if (override !== null) { hue = parseFloat(override); source = 'you'; }
+      else {
+        var pool = hues.filter(function(x){ return x.h !== lastHue; });
+        var pick = pool[Math.floor(Math.random()*pool.length)];
+        hue = pick.h; source = 'random';
+      }
+      html.style.setProperty('--h', hue);
+      html.setAttribute('data-hue-source', source);
+      localStorage.setItem('rave-hue', hue);
+      var theme = localStorage.getItem('rave-theme');
+      if (!theme) theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'fluoro';
+      html.classList.add(theme);
+    })();</script>
+
+    
     <link rel="stylesheet" type="text/css" media="screen" href="https://robbie.computer/main.css" />
-
-    
-    <script>(function(){var c=[['orange','#FF5500'],['yellow','#F0E800'],['violet','#5500FF']];var pick=c[Math.floor(Math.random()*c.length)];var html=document.documentElement;html.style.setProperty('--accent',pick[1]);html.setAttribute('data-accent',pick[0]);})();</script>
-
-    
-    <script>(function(){var m=localStorage.getItem('rave-mode');if(m==='fluoro'){document.documentElement.classList.add('fluoro');}else if(m==='dark'){document.documentElement.classList.add('dark');}else if(!m&&window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.classList.add('dark');}})();</script>
 
     
     
 </head>
 
 
-<body>
-    <div class="content">
-        <header>
-    <div class="main">
-        <a href="https://robbie.computer">robbie.computer</a>
+<body data-page-type="project">
+    <canvas id="bg-canvas"></canvas>
 
-        
+    <div class="page-wrap">
+        <div class="container">
+            
+<header class="site-header">
+    <div class="site-header__row1">
+        <a class="logo" href="https://robbie.computer">robbie.computer</a>
+
+        <div class="theme-toggle">
+            <button class="theme-toggle__option" data-theme-option="dark">DARK</button>
+            <button class="theme-toggle__option" data-theme-option="fluoro">FLUORO</button>
+        </div>
     </div>
 
-    <nav>
-        
-        <a href="https://robbie.computer/projects">/projects</a>
-        
-        <a href="https://robbie.computer/posts">/posts</a>
-        
-        <a href="https://robbie.computer/about">/about</a>
-        
-
-        <button class="mode-toggle" id="mode-toggle" aria-label="Toggle display mode" title="Cycle display mode">DARK</button>
-    </nav>
+    <div class="site-header__row2">
+        <nav class="site-nav">
+            
+            <a class="nav-link is-active" href="https://robbie.computer/projects">/projects</a>
+            
+            <a class="nav-link" href="https://robbie.computer/posts">/posts</a>
+            
+            <a class="nav-link" href="https://robbie.computer/about">/about</a>
+            
+        </nav>
+    </div>
 </header>
 
 
-        
-    
-<main>
-    <article>
-        <div class="title">
             
-<div class="page-header">
-    git-find-rs
-</div>
+<main class="reading">
+    <a class="back-link" href="https://robbie.computer/projects">← /projects</a>
 
-
-            <div class="meta">
-                
-
-                
-
-                
-
-                
-
-                
-
-                
-            </div>
+    <article class="project">
+        <h1>git-find-rs</h1>
+        <p class="project-lede">CLI tool to navigate to git repositories</p>
+        <div class="project-meta">
+            <span class="chip">tool</span>
+            <a class="project-card__ext" href="https://github.com/robgyiv/git-find-rs" target="_blank" rel="noopener noreferrer">↗ github.com</a>
+        </div>
+        <div class="project-hero project-card__media" data-pixel-label="$ git-find-rs" data-pixel-seed="git-find-rs">
+            <canvas class="project-card__pixel-tile"></canvas>
         </div>
 
-        
-
-        
-
-        <section class="body">
+        <div class="project-body">
             <p>Example project page</p>
 
-        </section>
+        </div>
     </article>
 </main>
 
 
+            <footer class="site-footer">
+    <div class="site-footer__stats">DOM ready in <span id="dom-ready-stat">0</span>ms</div>
+    <div class="site-footer__hue">
+        <span class="hue-swatch"></span>
+        hue <span id="hue-value">–</span>° · <span id="hue-source">random on load</span>
+        <button id="hue-reroll" class="reroll-link">Reroll</button>
+        <a class="site-footer__github" href="https://github.com/robgyiv" target="_blank" rel="noopener noreferrer">↗ github</a>
+    </div>
+</footer>
+
+        </div>
     </div>
 
-    <script>
-    (function () {
-        var btn = document.getElementById('mode-toggle');
-        if (!btn) return;
-
-        // Cycle: paper → dark → fluoro → paper
-        // Button label always shows the NEXT mode
-
-        function currentMode() {
-            var html = document.documentElement;
-            if (html.classList.contains('fluoro')) return 'fluoro';
-            if (html.classList.contains('dark'))   return 'dark';
-            return 'paper';
-        }
-
-        function applyMode(mode) {
-            var html = document.documentElement;
-            html.classList.remove('fluoro', 'dark');
-            if (mode === 'fluoro') html.classList.add('fluoro');
-            if (mode === 'dark')   html.classList.add('dark');
-            localStorage.setItem('rave-mode', mode);
-        }
-
-        function nextMode(mode) {
-            if (mode === 'paper')  return 'dark';
-            if (mode === 'dark')   return 'fluoro';
-            return 'paper';
-        }
-
-        function updateLabel() {
-            var next = nextMode(currentMode());
-            btn.textContent = next.toUpperCase();
-            btn.title = 'Switch to ' + next + ' mode';
-            btn.setAttribute('aria-label', 'Switch to ' + next + ' mode');
-        }
-
-        updateLabel();
-
-        btn.addEventListener('click', function () {
-            applyMode(nextMode(currentMode()));
-            updateLabel();
-        });
-    })();
-    </script>
+    <script src="https://robbie.computer/js/reveal.js" defer></script>
+    <script src="https://robbie.computer/js/background.js" defer></script>
+    <script src="https://robbie.computer/js/flowfield.js" defer></script>
+    <script src="https://robbie.computer/js/state.js" defer></script>
 </body>
 
 </html>

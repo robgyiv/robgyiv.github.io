@@ -34,13 +34,28 @@
     
 
     
+    <script>(function(){
+      var hues = [{n:'yellow',h:105},{n:'orange',h:45},{n:'pink',h:355},{n:'purple',h:295},{n:'green',h:145},{n:'cyan',h:210}];
+      var html = document.documentElement;
+      var lastHue = parseFloat(localStorage.getItem('rave-hue'));
+      var override = localStorage.getItem('rave-hue-override');
+      var hue, source;
+      if (override !== null) { hue = parseFloat(override); source = 'you'; }
+      else {
+        var pool = hues.filter(function(x){ return x.h !== lastHue; });
+        var pick = pool[Math.floor(Math.random()*pool.length)];
+        hue = pick.h; source = 'random';
+      }
+      html.style.setProperty('--h', hue);
+      html.setAttribute('data-hue-source', source);
+      localStorage.setItem('rave-hue', hue);
+      var theme = localStorage.getItem('rave-theme');
+      if (!theme) theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'fluoro';
+      html.classList.add(theme);
+    })();</script>
+
+    
     <link rel="stylesheet" type="text/css" media="screen" href="https://robbie.computer/main.css" />
-
-    
-    <script>(function(){var c=[['orange','#FF5500'],['yellow','#F0E800'],['violet','#5500FF']];var pick=c[Math.floor(Math.random()*c.length)];var html=document.documentElement;html.style.setProperty('--accent',pick[1]);html.setAttribute('data-accent',pick[0]);})();</script>
-
-    
-    <script>(function(){var m=localStorage.getItem('rave-mode');if(m==='fluoro'){document.documentElement.classList.add('fluoro');}else if(m==='dark'){document.documentElement.classList.add('dark');}else if(!m&&window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.classList.add('dark');}})();</script>
 
     
     
@@ -48,469 +63,177 @@
 
 
 <body>
-    <div class="content">
-        <header>
-    <div class="main">
-        <a href="https://robbie.computer">robbie.computer</a>
+    <canvas id="bg-canvas"></canvas>
 
-        
+    <div class="page-wrap">
+        <div class="container">
+            
+<header class="site-header">
+    <div class="site-header__row1">
+        <a class="logo" href="https://robbie.computer">robbie.computer</a>
+
+        <div class="theme-toggle">
+            <button class="theme-toggle__option" data-theme-option="dark">DARK</button>
+            <button class="theme-toggle__option" data-theme-option="fluoro">FLUORO</button>
+        </div>
     </div>
 
-    <nav>
-        
-        <a href="https://robbie.computer/projects">/projects</a>
-        
-        <a href="https://robbie.computer/posts">/posts</a>
-        
-        <a href="https://robbie.computer/about">/about</a>
-        
-
-        <button class="mode-toggle" id="mode-toggle" aria-label="Toggle display mode" title="Cycle display mode">DARK</button>
-    </nav>
+    <div class="site-header__row2">
+        <nav class="site-nav">
+            
+            <a class="nav-link" href="https://robbie.computer/projects">/projects</a>
+            
+            <a class="nav-link" href="https://robbie.computer/posts">/posts</a>
+            
+            <a class="nav-link" href="https://robbie.computer/about">/about</a>
+            
+        </nav>
+    </div>
 </header>
 
 
+            
+    <section class="intro">
+        <h1>Writing code that's supposed to work, and art projects that <mark class="highlight">aren't supposed to do anything at all</mark>.</h1>
+        <p class="intro__lede">Experienced product engineer at startups in all growth stages. Fluent in Python, TypeScript, infrastructure, and looking things up.</p>
+    </section>
+
+    <div class="flowfield-panel">
+        <canvas id="flowfield-canvas"></canvas>
+        <div class="flowfield-panel__captions">
+            <span class="chip-caption">flowfield.js · vanilla canvas · no libraries</span>
+            <span class="chip-caption">move your cursor through it</span>
+        </div>
+    </div>
+
+    
+
+    <section class="section">
+        <div class="section-header">
+            <span class="section-label"><span class="section-label__marker">//</span> SELECTED WORK</span>
+            <a class="dashed-link" href="https://robbie.computer/projects">All 13 projects →</a>
+        </div>
+        <div class="selected-work-grid">
+            
+<a href="https://robbie.computer/projects/youarehere/" class="project-card" data-tag="art">
+    <div class="project-card__media">
         
+<img class="project-card__dither" src="https://robbie.computer/projects/img/youarehere.dither.png" alt="" loading="lazy">
+<img class="project-card__photo" src="https://robbie.computer/projects/img/youarehere.webp" alt="You Are Here" loading="lazy">
+
+    </div>
+
+    <div class="project-card__body">
+        <h3 class="project-card__title">
+            <span class="project-card__title-text">You Are Here</span>
+            <span class="chip">art</span>
+        </h3>
+        <p class="project-card__desc">Ambient artwork tracking planetary orbits</p>
+    </div>
+</a>
+
+            
+<a href="https://robbie.computer/projects/checkboxes/" class="project-card" data-tag="game">
+    <div class="project-card__media">
+        
+<img class="project-card__dither" src="https://robbie.computer/projects/img/checkboxes.dither.png" alt="" loading="lazy">
+<img class="project-card__photo" src="https://robbie.computer/projects/img/checkboxes.webp" alt="Checkboxes" loading="lazy">
+
+    </div>
+
+    <div class="project-card__body">
+        <h3 class="project-card__title">
+            <span class="project-card__title-text">Checkboxes</span>
+            <span class="chip">game</span>
+        </h3>
+        <p class="project-card__desc">Massively multiplayer online checkbox game</p>
+    </div>
+</a>
+
+            
+<a href="https://robbie.computer/projects/wordmorpher/" class="project-card" data-tag="game">
+    <div class="project-card__media">
+        
+<img class="project-card__dither" src="https://robbie.computer/projects/img/wordmorpher.dither.png" alt="" loading="lazy">
+<img class="project-card__photo" src="https://robbie.computer/projects/img/wordmorpher.webp" alt="Word Morpher" loading="lazy">
+
+    </div>
+
+    <div class="project-card__body">
+        <h3 class="project-card__title">
+            <span class="project-card__title-text">Word Morpher</span>
+            <span class="chip">game</span>
+        </h3>
+        <p class="project-card__desc">Think of almost any word and show it online</p>
+    </div>
+</a>
+
+            
+<a href="https://dev.robbie.computer/flowfield" class="project-card" data-tag="art">
+    <div class="project-card__media">
+        
+<img class="project-card__dither" src="https://robbie.computer/projects/img/flowfield.dither.png" alt="" loading="lazy">
+<img class="project-card__photo" src="https://robbie.computer/projects/img/flowfield.webp" alt="Flowfield" loading="lazy">
+
+    </div>
+
+    <div class="project-card__body">
+        <h3 class="project-card__title">
+            <span class="project-card__title-text">Flowfield</span>
+            <span class="chip">art</span>
+        </h3>
+        <p class="project-card__desc">Ambient artwork</p>
+        <span class="project-card__ext">↗ dev.robbie.computer</span>
+    </div>
+</a>
+
+        </div>
+    </section>
+
     
-    
-<div class="page-header">
-    Projects
+
+    <section class="section">
+        <span class="section-label"><span class="section-label__marker">//</span> LATEST WRITING</span>
+        <div class="post-list">
+            
+<div class="post-row">
+    <span class="post-row__date">2026-02-11</span>
+    <a class="post-row__title" href="https://robbie.computer/posts/jumping-into-a-codebase-built-by-a-human-and-a-machine/">Jumping into a codebase built by a human and a machine</a>
 </div>
 
+            
+<div class="post-row">
+    <span class="post-row__date">2025-11-12</span>
+    <a class="post-row__title" href="https://robbie.computer/posts/engineering-interviews-are-broken/">Engineering interviews are broken</a>
+</div>
 
-    <main>
-<div class="cards">
-    <div class="card">
-        
-        
-        <a href="https://robbie.computer/projects/avail/">
-            <img class="card-image" alt="/projects/img/avail.webp" src="https://robbie.computer/projects/img/avail.webp" />
-        </a>
-        
-        
+            
+<div class="post-row">
+    <span class="post-row__date">2025-09-26</span>
+    <a class="post-row__title" href="https://robbie.computer/posts/move-fast-and-fix-things/">Move fast and fix things</a>
+</div>
 
-        <div class="card-info">
-            <h1 class="card-title">
-                
-                <a href="https://robbie.computer/projects/avail/">avail</a>
-                
-            </h1>
+        </div>
+    </section>
 
-            <div class="meta">
-            </div>
 
-            <div class="card-description">
-                
-                Availability-aware scheduling helper
-                
-            </div>
+            <footer class="site-footer">
+    <div class="site-footer__stats">DOM ready in <span id="dom-ready-stat">0</span>ms</div>
+    <div class="site-footer__hue">
+        <span class="hue-swatch"></span>
+        hue <span id="hue-value">–</span>° · <span id="hue-source">random on load</span>
+        <button id="hue-reroll" class="reroll-link">Reroll</button>
+        <a class="site-footer__github" href="https://github.com/robgyiv" target="_blank" rel="noopener noreferrer">↗ github</a>
+    </div>
+</footer>
+
         </div>
     </div>
-    
-    <div class="card">
-        
-        
-        <a href="https://robbie.computer/projects/findmebylink/">
-            <img class="card-image" alt="/projects/img/findmebylink.webp" src="https://robbie.computer/projects/img/findmebylink.webp" />
-        </a>
-        
-        
 
-        <div class="card-info">
-            <h1 class="card-title">
-                
-                <a href="https://robbie.computer/projects/findmebylink/">FindMeByLink</a>
-                
-            </h1>
-
-            <div class="meta">
-            </div>
-
-            <div class="card-description">
-                
-                A simple “find me” page you can share
-                
-            </div>
-        </div>
-    </div>
-    
-    <div class="card">
-        
-        
-        <a href="https://robbie.computer/projects/jobapplicator98/">
-            <img class="card-image" alt="/projects/img/jobapplicator98.webp" src="https://robbie.computer/projects/img/jobapplicator98.webp" />
-        </a>
-        
-        
-
-        <div class="card-info">
-            <h1 class="card-title">
-                
-                <a href="https://robbie.computer/projects/jobapplicator98/">JobApplicator98</a>
-                
-            </h1>
-
-            <div class="meta">
-            </div>
-
-            <div class="card-description">
-                
-                Get a job in tech, they said
-                
-            </div>
-        </div>
-    </div>
-    
-    <div class="card">
-        
-        
-        <a href="https://robbie.computer/projects/wordmorpher/">
-            <img class="card-image" alt="/projects/img/wordmorpher.webp" src="https://robbie.computer/projects/img/wordmorpher.webp" />
-        </a>
-        
-        
-
-        <div class="card-info">
-            <h1 class="card-title">
-                
-                <a href="https://robbie.computer/projects/wordmorpher/">Word Morpher</a>
-                
-            </h1>
-
-            <div class="meta">
-            </div>
-
-            <div class="card-description">
-                
-                Think of almost any word and show it online
-                
-            </div>
-        </div>
-    </div>
-    
-    <div class="card">
-        
-        
-        <a href="https://robbie.computer/projects/youarehere/">
-            <img class="card-image" alt="/projects/img/youarehere.webp" src="https://robbie.computer/projects/img/youarehere.webp" />
-        </a>
-        
-        
-
-        <div class="card-info">
-            <h1 class="card-title">
-                
-                <a href="https://robbie.computer/projects/youarehere/">You Are Here</a>
-                
-            </h1>
-
-            <div class="meta">
-            </div>
-
-            <div class="card-description">
-                
-                Ambient artwork tracking planetary orbits
-                
-            </div>
-        </div>
-    </div>
-    
-    <div class="card">
-        
-        
-        <a href="https://robbie.computer/projects/checkboxes/">
-            <img class="card-image" alt="/projects/img/checkboxes.webp" src="https://robbie.computer/projects/img/checkboxes.webp" />
-        </a>
-        
-        
-
-        <div class="card-info">
-            <h1 class="card-title">
-                
-                <a href="https://robbie.computer/projects/checkboxes/">Checkboxes</a>
-                
-            </h1>
-
-            <div class="meta">
-            </div>
-
-            <div class="card-description">
-                
-                Massively multiplayer online checkbox game
-                
-            </div>
-        </div>
-    </div>
-    
-    <div class="card">
-        
-        
-        <a href="https://dev.robbie.computer/flowcube">
-            <img class="card-image" alt="/projects/img/flowcube.webp" src="https://robbie.computer/projects/img/flowcube.webp" />
-        </a>
-        
-        
-
-        <div class="card-info">
-            <h1 class="card-title">
-                
-                <a href="https://dev.robbie.computer/flowcube">flowcube</a>
-                
-            </h1>
-
-            <div class="meta">
-            </div>
-
-            <div class="card-description">
-                
-                p5js flow field experiment
-                
-            </div>
-        </div>
-    </div>
-    
-    <div class="card">
-        
-        
-        <a href="https://dev.robbie.computer/flowfield">
-            <img class="card-image" alt="/projects/img/flowfield.webp" src="https://robbie.computer/projects/img/flowfield.webp" />
-        </a>
-        
-        
-
-        <div class="card-info">
-            <h1 class="card-title">
-                
-                <a href="https://dev.robbie.computer/flowfield">Flowfield</a>
-                
-            </h1>
-
-            <div class="meta">
-            </div>
-
-            <div class="card-description">
-                
-                Ambient artwork
-                
-            </div>
-        </div>
-    </div>
-    
-    <div class="card">
-        
-        
-        <a href="https://robbie.computer/projects/cool-frog/">
-            <img class="card-image" alt="/projects/img/coolfrog.webp" src="https://robbie.computer/projects/img/coolfrog.webp" />
-        </a>
-        
-        
-
-        <div class="card-info">
-            <h1 class="card-title">
-                
-                <a href="https://robbie.computer/projects/cool-frog/">A cool frog</a>
-                
-            </h1>
-
-            <div class="meta">
-            </div>
-
-            <div class="card-description">
-                
-                It&#39;s just a cool frog
-                
-            </div>
-        </div>
-    </div>
-    
-    <div class="card">
-        
-        
-        <a href="https://faculty.ai">
-            <div class="card-image-placeholder">
-                <canvas id="pixelCanvas-9" width="160" height="160" class="pixel-art-canvas"></canvas>
-            </div>
-        </a>
-        
-        
-
-        <div class="card-info">
-            <h1 class="card-title">
-                
-                <a href="https://faculty.ai">Frontier</a>
-                
-            </h1>
-
-            <div class="meta">
-            </div>
-
-            <div class="card-description">
-                
-                Decision intelligence platform and machine learning workbench
-                
-            </div>
-        </div>
-    </div>
-    
-    <div class="card">
-        
-        
-        <a href="https://github.com/robgyiv/git-find-rs">
-            <div class="card-image-placeholder">
-                <canvas id="pixelCanvas-10" width="160" height="160" class="pixel-art-canvas"></canvas>
-            </div>
-        </a>
-        
-        
-
-        <div class="card-info">
-            <h1 class="card-title">
-                
-                <a href="https://github.com/robgyiv/git-find-rs">git-find-rs</a>
-                
-            </h1>
-
-            <div class="meta">
-            </div>
-
-            <div class="card-description">
-                
-                CLI tool to navigate to git repositories
-                
-            </div>
-        </div>
-    </div>
-    
-    <div class="card">
-        
-        
-        <a href="https://github.com/robgyiv/git-web-line">
-            <div class="card-image-placeholder">
-                <canvas id="pixelCanvas-11" width="160" height="160" class="pixel-art-canvas"></canvas>
-            </div>
-        </a>
-        
-        
-
-        <div class="card-info">
-            <h1 class="card-title">
-                
-                <a href="https://github.com/robgyiv/git-web-line">git-web-line</a>
-                
-            </h1>
-
-            <div class="meta">
-            </div>
-
-            <div class="card-description">
-                
-                Neovim plugin to easily share Git web links
-                
-            </div>
-        </div>
-    </div>
-    
-    <div class="card">
-        
-        
-        <a href="https://vimeo.com/464978924">
-            <img class="card-image" alt="/projects/img/ledpanel.jpeg" src="https://robbie.computer/projects/img/ledpanel.jpeg" />
-        </a>
-        
-        
-
-        <div class="card-info">
-            <h1 class="card-title">
-                
-                <a href="https://vimeo.com/464978924">LED panel</a>
-                
-            </h1>
-
-            <div class="meta">
-            </div>
-
-            <div class="card-description">
-                
-                Experimenting with LEDs run from a Raspberry Pi
-                
-            </div>
-        </div>
-    </div>
-    </div>
-
-<script src="https://robbie.computer/js/generatepostheader.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const canvases = document.querySelectorAll('.pixel-art-canvas');
-        canvases.forEach(canvas => {
-            const card = canvas.closest('.card');
-            const titleElement = card.querySelector('.card-title a');
-            if (titleElement) {
-                const title = titleElement.textContent.trim();
-                generateAndRenderForCard(title, canvas.id);
-            }
-        });
-    });
-
-    async function generateAndRenderForCard(title, canvasId) {
-        const hash = await getSHA256Hash(title);
-        const seed = hashToSeed(hash);
-        const rng = mulberry32(seed);
-        const pixelData = generateGradientPixelArt(rng, 64, 128, palette);
-        renderPixelArt(pixelData, canvasId, 8);
-    }
-</script>
-
-    </main>
-
-    
-
-    </div>
-
-    <script>
-    (function () {
-        var btn = document.getElementById('mode-toggle');
-        if (!btn) return;
-
-        // Cycle: paper → dark → fluoro → paper
-        // Button label always shows the NEXT mode
-
-        function currentMode() {
-            var html = document.documentElement;
-            if (html.classList.contains('fluoro')) return 'fluoro';
-            if (html.classList.contains('dark'))   return 'dark';
-            return 'paper';
-        }
-
-        function applyMode(mode) {
-            var html = document.documentElement;
-            html.classList.remove('fluoro', 'dark');
-            if (mode === 'fluoro') html.classList.add('fluoro');
-            if (mode === 'dark')   html.classList.add('dark');
-            localStorage.setItem('rave-mode', mode);
-        }
-
-        function nextMode(mode) {
-            if (mode === 'paper')  return 'dark';
-            if (mode === 'dark')   return 'fluoro';
-            return 'paper';
-        }
-
-        function updateLabel() {
-            var next = nextMode(currentMode());
-            btn.textContent = next.toUpperCase();
-            btn.title = 'Switch to ' + next + ' mode';
-            btn.setAttribute('aria-label', 'Switch to ' + next + ' mode');
-        }
-
-        updateLabel();
-
-        btn.addEventListener('click', function () {
-            applyMode(nextMode(currentMode()));
-            updateLabel();
-        });
-    })();
-    </script>
+    <script src="https://robbie.computer/js/reveal.js" defer></script>
+    <script src="https://robbie.computer/js/background.js" defer></script>
+    <script src="https://robbie.computer/js/flowfield.js" defer></script>
+    <script src="https://robbie.computer/js/state.js" defer></script>
 </body>
 
 </html>
