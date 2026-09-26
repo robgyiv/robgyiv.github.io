@@ -4,7 +4,7 @@
  *
  * Cross-file event contract: this file dispatches a custom `rave:hue-change`
  * event on `window` whenever the theme is switched or the hue is rerolled.
- * background.js and flowfield.js both listen for it to recolour/reseed
+ * background.js and waves.js both listen for it to recolour/reseed
  * immediately instead of waiting for their next scheduled frame.
  *
  * Must stay in sync with the pre-paint bootstrap script in <head> (added by

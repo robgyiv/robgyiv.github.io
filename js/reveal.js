@@ -8,7 +8,7 @@
  *      (.project-card__media[data-pixel-label]), via FNV-1a -> mulberry32.
  *
  * Also listens for the shared `rave:hue-change` event (see background.js /
- * flowfield.js for the full contract) so pixel tiles stay in sync with the
+ * waves.js for the full contract) so pixel tiles stay in sync with the
  * page's current --h after a theme toggle or reroll.
  */
 (function () {
