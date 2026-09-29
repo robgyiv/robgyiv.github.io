@@ -104,14 +104,10 @@
           chip.classList.add('is-active');
           var tag = chip.dataset.tag;
           cards.forEach(function (card) {
-            // The featured card is a rest that only appears under "all"
-            // (README, "Projects /projects" — "Featured card (only when
-            // the filter is 'all')"), independent of whether its own tag
-            // matches the active filter.
-            if (card.classList.contains('project-card--featured')) {
-              card.hidden = tag !== 'all';
-              return;
-            }
+            // Every card, featured included, follows its own tag: hiding the
+            // featured card under a matching filter dropped the project from
+            // the page entirely, since projects.html renders featured pages
+            // above the grid and skips them inside it.
             card.hidden = tag !== 'all' && card.dataset.tag !== tag;
           });
         });
