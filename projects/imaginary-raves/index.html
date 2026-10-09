@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+
+    
+    
+    
+    <title>Imaginary raves</title>
+    
+    <meta property="og:title" content="Imaginary raves" />
+    
+    
+
+    
+    
+    <meta property="og:description" content="Generative oldskool rave flyers" />
+    
+    
+
+    
+    
+    <meta name="description" content="Generative oldskool rave flyers" />
+    
+    
+
+    
+    
+
+    
+    <link rel="alternate" type="application/atom+xml" title="robbie.computer" href="https://robbie.computer/atom.xml">
+
+    
+
+    
+    <script>(function(){
+      var hues = [{n:'yellow',h:105},{n:'orange',h:45},{n:'pink',h:355},{n:'purple',h:295},{n:'green',h:145},{n:'cyan',h:210}];
+      var html = document.documentElement;
+      var lastHue = parseFloat(localStorage.getItem('rave-hue'));
+      var override = localStorage.getItem('rave-hue-override');
+      var hue, source;
+      if (override !== null) { hue = parseFloat(override); source = 'you'; }
+      else {
+        var pool = hues.filter(function(x){ return x.h !== lastHue; });
+        var pick = pool[Math.floor(Math.random()*pool.length)];
+        hue = pick.h; source = 'random';
+      }
+      html.style.setProperty('--h', hue);
+      html.setAttribute('data-hue-source', source);
+      localStorage.setItem('rave-hue', hue);
+      var theme = localStorage.getItem('rave-theme');
+      if (!theme) theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'fluoro';
+      html.classList.add(theme);
+    })();</script>
+
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="https://robbie.computer/main.css" />
+
+    
+    
+</head>
+
+
+<body data-page-type="project">
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="page-wrap">
+        <div class="container">
+            
+<header class="site-header">
+    <div class="site-header__row1">
+        <a class="logo" href="https://robbie.computer">robbie.computer</a>
+
+        <div class="theme-toggle">
+            <button class="theme-toggle__option" data-theme-option="dark">DARK</button>
+            <button class="theme-toggle__option" data-theme-option="fluoro">FLUORO</button>
+        </div>
+    </div>
+
+    <div class="site-header__row2">
+        <nav class="site-nav">
+            
+            <a class="nav-link is-active" href="https://robbie.computer/projects">/projects</a>
+            
+            <a class="nav-link" href="https://robbie.computer/posts">/posts</a>
+            
+            <a class="nav-link" href="https://robbie.computer/about">/about</a>
+            
+        </nav>
+    </div>
+</header>
+
+
+            
+<main class="reading">
+    <a class="back-link" href="https://robbie.computer/projects">← /projects</a>
+
+    <article class="project">
+        <h1>Imaginary raves</h1>
+        <p class="project-lede">Generative oldskool rave flyers</p>
+        <div class="project-meta">
+            <span class="chip">art</span>
+        </div>
+        <div class="project-hero project-card__media">
+            
+<img class="project-card__dither" src="https://robbie.computer/projects/img/imaginary-raves.dither.png" alt="" loading="lazy">
+<img class="project-card__photo" src="https://robbie.computer/projects/img/imaginary-raves.webp" alt="Imaginary raves" loading="lazy">
+
+        </div>
+
+        <div class="project-body">
+            <p>Imaginary Raves is a generator for flyers from UK acid house raves that never happened, 1988 to 1992. Each one is black photocopier toner on fluorescent paper, with era-correct details: smileys and starbursts, ransom-note and Letraset-style type, DJ lineups, 0898 info lines and meeting points at motorway service stations. Every flyer comes from a seed in the URL (like <code>yellow-mitsubishi-dazed</code>), so any flyer can be shared and brought back exactly.</p>
+<p>Under the hood, the artwork is drawn on a 2D canvas from editable lists of copy, layout templates and vector graphics. It then runs through a GPU photocopier built with three.js shaders. Each pass adds misalignment, toner spread, speckle, dropout and drum streaks, so a flyer can be a copy of a copy of a copy. The result is shown as a real sheet of paper in 3D: curled edges, dog-eared corners and fold creases, lit from one side, with a soft shadow and a slowly drifting camera. You can zoom in to read the small print, and flatten it back out.</p>
+<p>Like collectible cards, some seeds carry rare traits. Some are fly-posted in grids as if pasted on a wall. Others are lit by the venue's coloured lights or sweeping lasers, or come out as shiny holographic foil that catches the light as you move the pointer. Each part of the design is rolled on its own random stream, so I could keep adding features without changing flyers people had already shared.</p>
+<p><a rel="external" href="https://dev.robbie.computer/imaginary-raves">Have it!</a></p>
+
+        </div>
+    </article>
+</main>
+
+
+            <footer class="site-footer">
+    <div class="site-footer__stats">DOM ready in <span id="dom-ready-stat">0</span>ms</div>
+    <div class="site-footer__hue">
+        <span class="hue-swatch"></span>
+        hue <span id="hue-value">–</span>° · <span id="hue-source">random on load</span>
+        <button id="hue-reroll" class="reroll-link">Reroll</button>
+        <a class="site-footer__github" href="https://github.com/robgyiv" target="_blank" rel="noopener noreferrer">↗ github</a>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <script src="https://robbie.computer/js/reveal.js" defer></script>
+    <script src="https://robbie.computer/js/background.js" defer></script>
+    <script src="https://robbie.computer/js/waves.js" defer></script>
+    <script src="https://robbie.computer/js/state.js" defer></script>
+</body>
+
+</html>
